@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Compression Thesis — CMPRSSN</title>
+<meta name="description" content="The real reason your AI isn't working. Your organization was designed for humans at human speed. CMPRSSN redesigns the operating model for the agentic environment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a;
+  --bg-surface: #111111;
+  --bg-surface-2: #161616;
+  --bg-surface-3: #1c1c1c;
+  --border: #252525;
+  --border-subtle: #1a1a1a;
+  --text: #f0ece6;
+  --text-muted: #8a8580;
+  --text-faint: #4a4845;
+  --accent: #4f98a3;
+  --accent-hover: #3d8090;
+  --accent-glow: rgba(79,152,163,0.15);
+  --red: #c4493c;
+  --orange: #bb653b;
+  --green: #6daa45;
+  --purple: #a86fdf;
+  --pink: #dd6974;
+  --yellow: #e8af34;
+  --blue: #5591c7;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --content-width: 85ch;
+  --wide-width: 1200px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ────────────────────────────────────────────────────────────────── */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.nav-cta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--bg);
+  background: var(--accent);
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background var(--transition), transform var(--transition);
+}
+.nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+/* ─── PROGRESS ───────────────────────────────────────────────────────────── */
+#progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--red));
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ─── LAYOUT ─────────────────────────────────────────────────────────────── */
+.container { max-width: var(--content-width); margin: 0 auto; padding: 0 2rem; }
+.container-wide { max-width: var(--wide-width); margin: 0 auto; padding: 0 2rem; }
+section {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+section:last-of-type { border-bottom: none; }
+
+/* ─── HERO ───────────────────────────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
+}
+.hero-glow {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(79,152,163,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: glow-drift 12s ease-in-out infinite alternate;
+}
+.hero-glow-2 {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(196,73,60,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: glow-drift 15s ease-in-out infinite alternate-reverse;
+}
+@keyframes glow-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, -30px) scale(1.1); }
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: fade-up 0.8s var(--ease-out) 0.2s forwards;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  max-width: 16ch;
+  opacity: 0;
+  animation: fade-up 0.8s var(--ease-out) 0.35s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--red);
+}
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 3.5rem;
+  max-width: 55ch;
+  line-height: 1.4;
+  opacity: 0;
+  animation: fade-up 0.8s var(--ease-out) 0.5s forwards;
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Stats */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 0;
+  width: fit-content;
+  opacity: 0;
+  animation: fade-up 0.8s var(--ease-out) 0.65s forwards;
+}
+.stat-item {
+  padding: 1.75rem 2.5rem;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  transition: background var(--transition);
+}
+.stat-item:not(:last-child) { border-right: none; }
+.stat-item:hover { background: var(--bg-surface-2); }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  display: block;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* ─── SECTION TYPOGRAPHY ─────────────────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: block;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+.section-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  line-height: 1.4;
+}
+
+/* ─── PROSE ──────────────────────────────────────────────────────────────── */
+.prose p {
+  margin-bottom: 1.5rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--text); font-weight: 600; }
+.prose em { font-style: italic; color: var(--accent); }
+
+/* ─── SIGNAL BARS (animated diagnostic graphic) ──────────────────────────── */
+.signal-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.signal-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.signal-bar-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  width: 160px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.signal-bar-track {
+  flex: 1;
+  height: 28px;
+  background: var(--bg-surface-3);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.signal-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1.5s var(--ease-out);
+  width: 0;
+  position: relative;
+}
+.signal-bar-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,0.3);
+}
+.signal-bar-value {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  width: 48px;
+  flex-shrink: 0;
+}
+
+/* ─── SYMPTOM CARDS ──────────────────────────────────────────────────────── */
+.symptom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+.symptom-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  border-radius: 0 8px 8px 0;
+  padding: 1.75rem;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.symptom-card:hover {
+  border-left-color: var(--accent);
+  transform: translateY(-2px);
+}
+.symptom-num {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+.symptom-text {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* ─── PULL QUOTE ─────────────────────────────────────────────────────────── */
+.pull-quote {
+  border-left: 2px solid var(--red);
+  padding: 1.5rem 0 1.5rem 2rem;
+  margin: 3rem 0;
+}
+.pull-quote blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+/* ─── PROCESS STEPS ──────────────────────────────────────────────────────── */
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 3rem 0;
+}
+.process-step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 2rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: border-color var(--transition);
+}
+.process-step:last-child { border-bottom: none; }
+.process-step:hover { border-color: var(--border); }
+.step-number {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--bg-surface-3);
+  transition: color 0.4s var(--ease-out);
+}
+.process-step:hover .step-number { color: var(--accent); }
+.step-content {}
+.step-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+.step-body {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.step-body strong { color: var(--text); }
+
+/* ─── FORCING FUNCTIONS ──────────────────────────────────────────────────── */
+.timeline-strip {
+  display: flex;
+  gap: 0;
+  margin: 3rem 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(240,236,230,0.12) transparent;
+}
+.timeline-item {
+  flex: 1;
+  min-width: 200px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-right: none;
+  background: var(--bg-surface);
+  transition: background var(--transition);
+  position: relative;
+}
+.timeline-item:last-child { border-right: 1px solid var(--border); }
+.timeline-item:hover { background: var(--bg-surface-2); }
+.timeline-item.active {
+  border-color: var(--red);
+  background: rgba(196,73,60,0.05);
+}
+.timeline-item.active .timeline-date { color: var(--red); }
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.timeline-label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+.timeline-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.timeline-status {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+  padding: 0.2em 0.6em;
+  border-radius: 3px;
+  display: inline-block;
+}
+.status-live {
+  color: var(--green);
+  background: rgba(109,170,69,0.1);
+  border: 1px solid rgba(109,170,69,0.2);
+}
+.status-imminent {
+  color: var(--red);
+  background: rgba(196,73,60,0.1);
+  border: 1px solid rgba(196,73,60,0.2);
+}
+.status-approaching {
+  color: var(--yellow);
+  background: rgba(232,175,52,0.1);
+  border: 1px solid rgba(232,175,52,0.2);
+}
+
+/* ─── CTA SECTION ────────────────────────────────────────────────────────── */
+#cta {
+  text-align: center;
+  padding: clamp(5rem, 10vw, 10rem) 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(79,152,163,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.cta-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.375rem);
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  max-width: 50ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+  position: relative;
+}
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  color: var(--bg);
+  background: var(--accent);
+  padding: 1rem 2.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  position: relative;
+}
+.cta-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(79,152,163,0.25);
+}
+.cta-button::after {
+  content: '→';
+  transition: transform var(--transition);
+}
+.cta-button:hover::after { transform: translateX(4px); }
+
+/* ─── COMPRESSION DIAGRAM ────────────────────────────────────────────────── */
+.compression-diagram {
+  margin: 3rem auto;
+  max-width: 640px;
+}
+.diagram-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  position: relative;
+}
+.diagram-row::after {
+  content: '';
+  position: absolute;
+  left: 35px;
+  bottom: -1px;
+  right: 0;
+  height: 1px;
+  background: var(--border-subtle);
+}
+.diagram-row:last-child::after { display: none; }
+.diagram-icon {
+  width: 70px;
+  height: 48px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.diagram-arrow {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+.diagram-label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 600;
+}
+.diagram-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+/* ─── PARTNER LOGOS ──────────────────────────────────────────────────────── */
+.partner-strip {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+.partner-name {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  transition: color var(--transition);
+}
+.partner-name:hover { color: var(--text-muted); }
+
+/* ─── FOOTER ─────────────────────────────────────────────────────────────── */
+footer {
+  padding: 3rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border-subtle);
+}
+.footer-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+}
+.footer-text a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(2) { border-right: 1px solid var(--border); }
+  .stat-item:nth-child(3), .stat-item:nth-child(4) { border-top: none; }
+  .process-step { grid-template-columns: 1fr; gap: 0.75rem; }
+  .step-number { font-size: 2rem; }
+  .timeline-strip { flex-direction: column; }
+  .timeline-item { border-right: 1px solid var(--border); border-bottom: none; }
+  .timeline-item:last-child { border-bottom: 1px solid var(--border); }
+  .signal-bar-label { width: 100px; font-size: 0.6rem; }
+  .diagram-row { flex-wrap: wrap; }
+}
+
+/* ─── REVEAL ANIMATIONS ──────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress"></div>
+
+<!-- Navigation -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">CMPRSSN</a>
+    <a href="https://app.reclaim.ai/m/high/m-compression-hourlong" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">The Compression Thesis</div>
+    <h1 class="hero-title">The Real Reason Your AI <em>Isn't Working</em></h1>
+    <p class="hero-subtitle">You invested in AI tools, hired the consultants, ran the pilots. Some things got faster. Nothing fundamentally changed. The reason is structural.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number" data-target="95">0</span>
+        <span class="stat-label">% Pilots Fail to Scale</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="70">0</span>
+        <span class="stat-label">% Failure Is Org, Not Tech</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="56">0</span>
+        <span class="stat-label">% See Zero ROI</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">5<span style="font-size:0.6em">%</span></span>
+        <span class="stat-label">Actually Transform</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- THE PROBLEM -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="problem">
+  <div class="container">
+    <span class="section-label reveal">The Structural Gap</span>
+    <h2 class="section-title reveal">Your organization was designed for humans making decisions at human speed.</h2>
+    <p class="section-subtitle reveal">The workflows, roles, approval chains, and information architecture — all built assuming a person is in the loop at every step. When you drop AI agents into that structure, they inherit its limitations.</p>
+
+    <div class="prose reveal">
+      <p>The agents are capable. The organization around them isn't ready. Most transformation programs treat the technology as the variable and leave the organization fixed — adding agents to existing workflows, training people on new tools, building dashboards. <strong>This is the wrong order of operations.</strong></p>
+    </div>
+
+    <div class="pull-quote reveal">
+      <blockquote>AI agents don't just automate tasks — they change where decisions get made, where accountability lives, and what information needs to move between people versus what can be handled autonomously.</blockquote>
+    </div>
+
+    <div class="prose reveal">
+      <p>If your organizational structure, decision rights, and governance model aren't redesigned to match, you're running a Formula 1 engine in a chassis built for dirt roads. The AI underperforms. The team gets frustrated. Leadership concludes the technology wasn't ready. <strong>The technology was ready. The organization wasn't.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- SYMPTOMS -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="symptoms">
+  <div class="container">
+    <span class="section-label reveal">Diagnostic Signals</span>
+    <h2 class="section-title reveal">You'll recognize this if it's happening to you.</h2>
+
+    <div class="symptom-grid">
+      <div class="symptom-card reveal">
+        <div class="symptom-num">Signal 01</div>
+        <div class="symptom-text">Pilots succeed in isolation, then stall when they hit the real org. The demo worked. Production didn't.</div>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-num">Signal 02</div>
+        <div class="symptom-text">Teams use AI to do the same work faster, not different work. Efficiency gains, zero strategic shift.</div>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-num">Signal 03</div>
+        <div class="symptom-text">No one knows what the agent decided or why. When something goes wrong, there's no audit trail.</div>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-num">Signal 04</div>
+        <div class="symptom-text">Every new AI initiative requires a custom integration, a new approval process, a new governance conversation. It never gets easier.</div>
+      </div>
+      <div class="symptom-card reveal">
+        <div class="symptom-num">Signal 05</div>
+        <div class="symptom-text">You're spending more on AI tooling and still hiring for the same roles. The headcount math doesn't change.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- WHERE THE SPEND GOES (animated bars) -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="spend">
+  <div class="container">
+    <span class="section-label reveal">The Budget Reality</span>
+    <h2 class="section-title reveal">Where the money goes — versus where the value comes from.</h2>
+    <p class="section-subtitle reveal">BCG found that 70% of transformation value comes from people and process change. Most organizations spend less than 10% there.</p>
+
+    <div class="signal-bars reveal" id="bars">
+      <div class="signal-bar-row">
+        <span class="signal-bar-label">Technology Spend</span>
+        <div class="signal-bar-track">
+          <div class="signal-bar-fill" data-width="85" style="background: linear-gradient(90deg, var(--red), var(--orange));"></div>
+        </div>
+        <span class="signal-bar-value">~85%</span>
+      </div>
+      <div class="signal-bar-row">
+        <span class="signal-bar-label">Org Change Spend</span>
+        <div class="signal-bar-track">
+          <div class="signal-bar-fill" data-width="15" style="background: var(--accent);"></div>
+        </div>
+        <span class="signal-bar-value">~15%</span>
+      </div>
+      <div style="height: 1px; background: var(--border); margin: 1rem 0;"></div>
+      <div class="signal-bar-row">
+        <span class="signal-bar-label">Value from Tech</span>
+        <div class="signal-bar-track">
+          <div class="signal-bar-fill" data-width="30" style="background: linear-gradient(90deg, var(--red), var(--orange)); opacity: 0.6;"></div>
+        </div>
+        <span class="signal-bar-value">~30%</span>
+      </div>
+      <div class="signal-bar-row">
+        <span class="signal-bar-label">Value from People</span>
+        <div class="signal-bar-track">
+          <div class="signal-bar-fill" data-width="70" style="background: linear-gradient(90deg, var(--accent), var(--green));"></div>
+        </div>
+        <span class="signal-bar-value">~70%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- WHAT WE DO -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="approach">
+  <div class="container">
+    <span class="section-label reveal">The CMPRSSN Method</span>
+    <h2 class="section-title reveal">We redesign the organization for the agentic environment.</h2>
+    <p class="section-subtitle reveal">Before, during, and after deployment. Not the tools — the operating model.</p>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <div class="step-title">Diagnose the Structural Gap</div>
+          <div class="step-body">We audit how your organization currently processes information, makes decisions, and distributes accountability. We identify exactly <strong>where agents can absorb work, where they can't yet, and what has to change structurally</strong> for deployment to hold. This is the Process of Compression — distinguishing codebook rewrites from assimilation traps.</div>
+        </div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <div class="step-title">Redesign the Operating Model</div>
+          <div class="step-body">We rebuild the workflows, roles, and decision rules that AI agents will operate <strong>within — not around</strong>. This includes governance: what agents decide autonomously, what they flag for human review, and how every agent action is logged and auditable. The Organizational Stack meets the Agentic Stack.</div>
+        </div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <div class="step-title">Deploy with Infrastructure to Scale</div>
+          <div class="step-body">We work with <strong>LLABS</strong> (cognitive AI agents, SOC 2 Type II / HIPAA certified) and <strong>Inversed</strong> (cryptographic governance for AI — identity, audit trails, compliance) to deploy agents that are production-ready, compliant, and built to expand. Not pilots that die after 90 days.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- FORCING FUNCTIONS -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="urgency">
+  <div class="container">
+    <span class="section-label reveal">The Forcing Functions</span>
+    <h2 class="section-title reveal">The window is open. It won't stay that way.</h2>
+    <p class="section-subtitle reveal">Regulatory deadlines create a compliance clock that compounds on top of competitive pressure.</p>
+
+    <div class="timeline-strip reveal">
+      <div class="timeline-item active">
+        <div class="timeline-date">Live Now</div>
+        <div class="timeline-label">DORA</div>
+        <div class="timeline-desc">Digital operational resilience for financial services</div>
+        <span class="timeline-status status-live">Enforced</span>
+      </div>
+      <div class="timeline-item active">
+        <div class="timeline-date">Live Now</div>
+        <div class="timeline-label">NIS2</div>
+        <div class="timeline-desc">Network & information security for critical infrastructure</div>
+        <span class="timeline-status status-live">Enforced</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">July 2026</div>
+        <div class="timeline-label">MiCA</div>
+        <div class="timeline-desc">Markets in Crypto-Assets full application</div>
+        <span class="timeline-status status-imminent">4 Months</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">August 2026</div>
+        <div class="timeline-label">EU AI Act</div>
+        <div class="timeline-desc">High-risk AI system enforcement begins</div>
+        <span class="timeline-status status-imminent">5 Months</span>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">January 2027</div>
+        <div class="timeline-label">Machinery Reg</div>
+        <div class="timeline-desc">EU Machinery Regulation replaces Directive</div>
+        <span class="timeline-status status-approaching">10 Months</span>
+      </div>
+    </div>
+
+    <div class="prose reveal" style="margin-top: 2.5rem;">
+      <p>Organizations that redesign now build a structural advantage that compounds. Those that wait will be redesigning under regulatory pressure with fewer options, higher costs, and competitors who already made the shift.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- PARTNERS -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="partners" style="padding: clamp(2rem, 4vw, 3.5rem) 0;">
+  <div class="container" style="text-align: center;">
+    <span class="section-label reveal">Delivery Partners</span>
+    <div class="partner-strip reveal">
+      <span class="partner-name">LLABS · Cognitive Agent Infrastructure</span>
+      <span style="color: var(--border);">|</span>
+      <span class="partner-name">Inversed · Cryptographic AI Governance</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- CTA -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <div class="container" style="position: relative;">
+    <div class="section-label reveal" style="text-align: center;">The Question</div>
+    <h2 class="cta-title reveal">The question isn't <em style="color: var(--accent); font-style: italic;">whether</em> to transform.</h2>
+    <p class="cta-subtitle reveal">It's whether to do it on your terms — or under regulatory pressure with fewer options.</p>
+    <div class="reveal">
+      <a href="https://app.reclaim.ai/m/high/m-compression-hourlong" target="_blank" class="cta-button">Book a Compression Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <p class="footer-text">CMPRSSN · AI Readiness Audits · Agentic Transformation · Implementation & Governance<br><a href="https://cmprssn.xyz">cmprssn.xyz</a> · <a href="mailto:growth@cmprssn.xyz">growth@cmprssn.xyz</a></p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- SCRIPTS -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<script>
+// ─── PROGRESS BAR ─────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('progress').style.width = (window.scrollY / h * 100) + '%';
+});
+
+// ─── REVEAL ON SCROLL ─────────────────────────────────────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ─── COUNTER ANIMATION ───────────────────────────────────────────────────
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  if (!target) return;
+  const duration = 1200;
+  const start = performance.now();
+  function update(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(target * eased);
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.stat-number[data-target]').forEach(animateCounter);
+      statObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.hero-stats').forEach(el => statObserver.observe(el));
+
+// ─── SIGNAL BAR ANIMATION ────────────────────────────────────────────────
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.signal-bar-fill').forEach((bar, i) => {
+        setTimeout(() => {
+          bar.style.width = bar.dataset.width + '%';
+        }, i * 200);
+      });
+      barObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.signal-bars').forEach(el => barObserver.observe(el));
+
+// ─── NAV SCROLL STATE ────────────────────────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
+
+</body>
+</html>

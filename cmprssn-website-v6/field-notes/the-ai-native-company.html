@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The AI-Native Company Will Not Look Like a SaaS Company with Copilots — CMPRSSN Field Notes</title>
+<meta name="description" content="Most 'AI-native' claims are SaaS companies with an LLM bolted on. The actual AI-native company is structurally different — and the bet is structural, not tool-stack.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Cpath d='M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65' stroke='%23191918' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 28 V72 L68 28 V72' stroke='%23191918' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://framerusercontent.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://framerusercontent.com/assets/0y4e2dnjbvXv2rIsO8uj8iBVs.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://framerusercontent.com/assets/dQxMUUKNHsT2SlXtsq1ClLU9uiA.woff2" crossorigin>
+<link rel="stylesheet" href="../cmprssn-tokens.css">
+<link rel="stylesheet" href="field-notes.css">
+<style>
+/* Footer (shared across subpages) */
+.site-footer{padding-left:var(--pad-x);padding-right:var(--pad-x);padding-bottom:32px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding-top:32px;border-top:1px solid var(--line);}
+.footer-row{display:flex;flex-direction:column;gap:24px;justify-content:space-between;align-items:flex-start;}
+@media (min-width:760px){.footer-row{flex-direction:row;align-items:center;}}
+.footer-mail{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-muted);}
+.footer-line{font-family:var(--font-mono);margin-top:64px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-subtle);max-width:60ch;}
+@media (min-width:760px){.footer-line{display:none;}}
+/* Nav layout for subpages */
+.nav-shell{position:fixed;top:0;left:0;right:0;z-index:50;}
+.nav-row{display:flex;align-items:center;justify-content:space-between;padding-top:18px;padding-bottom:18px;gap:16px;}
+.brand{display:flex;align-items:center;gap:14px;color:var(--ink);min-width:0;}
+.brand-logo{width:24px;height:24px;display:inline-block;transform-origin:center;transition:transform 200ms cubic-bezier(0.2,0.8,0.2,1);}
+.brand-logo svg{width:100%;height:100%;overflow:visible;}
+.brand-wordmark{display:inline-flex;align-items:center;flex:0 0 auto;}
+.brand-wordmark svg{display:block;overflow:visible;}
+.desktop-nav{display:flex;align-items:center;gap:36px;}
+</style>
+</head>
+<body>
+
+<header class="nav-shell">
+  <div class="wrap nav-row">
+    <a href="/" class="brand" aria-label="CMPRSSN home">
+      <span class="brand-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path data-logo="c"
+                d="M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65"
+                stroke="currentColor" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" />
+          <path data-logo="n"
+                d="M32 28 V72 L68 28 V72"
+                stroke="currentColor" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <span class="brand-wordmark">
+        <svg width="120" height="30" viewBox="0 0 120 30" aria-label="CMPRSSN" role="img">
+          <text x="0" y="22"
+                font-family="'Decima Mono Pro',ui-monospace,monospace"
+                font-size="20" font-weight="400"
+                letter-spacing="6.4"
+                fill="currentColor" stroke="currentColor" stroke-width="1"
+                paint-order="stroke fill" stroke-linejoin="round">CMPRSSN</text>
+        </svg>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary">
+      <a href="/methodology.html" class="nav-link">Methodology</a>
+      <a href="/audit.html" class="nav-link">Audit</a>
+      <a href="/field-notes/" class="nav-link is-active">Field Notes</a>
+      <a href="/about.html" class="nav-link">About</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-sheet">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-sheet" id="mobile-sheet" aria-hidden="true">
+  <a href="/methodology.html" class="sheet-link"><span>Methodology</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/audit.html" class="sheet-link"><span>Audit</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/field-notes/" class="sheet-link"><span>Field Notes</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/about.html" class="sheet-link"><span>About</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <div class="sheet-cta">
+    <a href="mailto:growth@cmprssn.xyz" class="cta-amber" style="font-size:16px;padding:16px 24px;">
+      Book a conversation
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- Hero — architectural / structural / blueprint imagery (suggests structural redesign)
+     IMAGE PROMPT: line-drawing of a building, vintage architectural plan, scaffolding silhouette.
+     Avoid: glass-and-steel modern architecture, "smart city" tech imagery. -->
+<figure class="article-hero" aria-hidden="true">
+  <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2400&auto=format&fit=crop" alt="" />
+  <figcaption class="article-hero-caption"><span class="rule"></span><span>Fig 007 · The structure, not the surface</span></figcaption>
+</figure>
+
+<header class="article-header reveal">
+  <div class="article-eyebrow"><span class="rule"></span><span>Field Note · 07</span></div>
+  <h1 class="article-h1">The AI-Native Company Will Not Look Like a SaaS Company <em>with Copilots.</em></h1>
+  <p class="article-dek">Most "AI-native" claims are SaaS companies with an LLM bolted onto the side. The actual AI-native company is structurally different — its org chart, its mandates, its decision rights, and its capital allocation all assume machine intelligence as a native participant. The bet is structural.</p>
+  <div class="byline" style="--avatar-url: url('../assets/img/ryan-headshot.png');">
+    <div class="byline-avatar" aria-hidden="true">RVS</div>
+    <div class="byline-meta">
+      <div class="byline-name">Ryan Van Sickle</div>
+      <div class="byline-role">Co-Founder, CMPRSSN</div>
+    </div>
+    <div class="byline-date">
+      <span>Apr 6 · 2026</span>
+      <span class="read">11 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p class="lede">The phrase "AI-native company" has been diluted to the point of uselessness.</p>
+
+  <p>Every SaaS company with an LLM somewhere in its stack now claims it. Most consultancies have started using it as a descriptor for any client that has adopted ChatGPT. The pitch decks have absorbed it. The career pages have absorbed it. The investor calls have absorbed it. It means almost nothing.</p>
+
+  <p>So I want to reclaim it — by saying what it actually is, structurally, when it shows up.</p>
+
+  <p>An AI-native company is not a normal company with AI tools added. <em>It is a company whose structure, memory, workflows, governance, and economics all assume machine intelligence as a native participant.</em> The difference shows up below the UI. It shows up in the org chart. It shows up in how capital gets allocated, how decisions get recorded, how work gets assigned, how the company remembers itself.</p>
+
+  <p>It does not look like a SaaS company with copilots. It looks like something the org-chart conventions of the last forty years cannot describe.</p>
+
+  <h2>Six things that are structurally different</h2>
+
+  <p>Across the founders and teams I've talked to who are taking this seriously, six dimensions show up changed.</p>
+
+  <p><em>The org chart is smaller.</em> Not because layoffs — because of the MVO question, which I'll get to. The chart has fewer coordinator roles, fewer middle-management lines, and more direct accountability. The work that used to require a team of seven now requires a team of three with an intelligence layer underneath.</p>
+
+  <p><em>Mandates are decomposed, not bundled.</em> Roles are explicit compositions of the mandates they hold. When an agent is ready to absorb a particular mandate, the mandate moves — the role does not have to be re-written. This is the structural prerequisite for any of the rest. Without it, the company is stuck at the role-level grain of analysis.</p>
+
+  <p><em>Workflows are designed for human-agent composition.</em> Not "humans use AI as a tool." The workflow itself assumes that some steps are held by humans, some by agents, and the handoffs are explicit. Escalation paths are designed in. The agent has a place to live in the workflow, with a name and a scope, not bolted on top.</p>
+
+  <p><em>Decision rights are faster, more delegated, and more recorded.</em> Decisions are made at a lower altitude because the people closer to the work have better context — they are reasoning against a world model that is actually accurate. The leadership team makes fewer operational decisions and more strategic ones, because the operational layer is no longer routing every choice up.</p>
+
+  <p><em>Capital allocation stops being a binary between people and systems.</em> A budget line for "AI infrastructure" is the wrong shape. An AI-native company allocates capital by mandate — what does it cost to hold this mandate today, and what is the lowest-friction way to hold it next quarter? The answer is sometimes a person, sometimes an agent, sometimes a redesign that eliminates the mandate entirely. The procurement question stops being "buy or build" and becomes "hold or move."</p>
+
+  <p><em>Metrics change shape.</em> Revenue per employee stops being a vanity number and becomes a real one. The AI-native shops every operator is watching right now — Anthropic, Cursor, Midjourney, a handful of others — are running on team-to-revenue ratios that the SaaS playbook can't reproduce. The exact numbers move month to month; the order of magnitude doesn't. Two engineers, a Discord, and a billion-dollar revenue line is no longer the exception. The metrics get sharper as the team gets smaller — there is nowhere to hide.</p>
+
+  <blockquote class="pullquote">AI-native does not mean "uses AI." It means the organization was redesigned for intelligence.</blockquote>
+
+  <h2>What this looks like concretely</h2>
+
+  <p>Take a 200-person company seriously asking the question. Twelve departments. Thirty-four teams. Seventy named roles. Roughly half the headcount is coordination — project managers, ops managers, marketing managers, account managers — the layer that exists because work has to be routed and humans are the routing protocol.</p>
+
+  <p>Now imagine the leadership team answers the MVO question honestly. The number that comes back is not 200 and not 130. It's somewhere closer to 70 — humans holding the mandates that require judgment, with an intelligence layer underneath holding the coordination.</p>
+
+  <p>The move from one to the other is not a layoff. It's a hiring freeze on the coordination layer, a budget redirect into the substrate — canon, world model, supervision protocols, the named person who maintains all of it — and eighteen months of letting attrition do what attrition does.</p>
+
+  <p>I have not seen a 200-person company complete this in full. I have seen the early moves often enough to describe the shape. The redesign is real. Whether any incumbent finishes it is the open question.</p>
+
+  <h2>The MVO question</h2>
+
+  <p>The single best diagnostic I know for whether a company is taking the AI-native question seriously is the MVO question.</p>
+
+  <p>MVO is short for Minimum Viable Organization. The question is this: <em>if you were building this company today, from scratch, knowing what AI can already absorb, what handful of humans would you hire?</em></p>
+
+  <p>Not a thought experiment about headcount reduction. A real planning question.</p>
+
+  <p>Most companies have never asked it. They are running on the org structure they inherited from the time they were last forced to staff up — which was usually when AI did not yet exist in its current form. The org chart is a fossil record of past hiring pressure, not a current statement of operational coherence.</p>
+
+  <p>When companies actually answer the MVO question, the answer is almost never the current headcount. It is usually a smaller number with a different shape — fewer coordinators, more judgment-centric roles, more people whose job is to maintain the substrate (the canon, the world model, the agent supervision layer) that lets the rest of the operation function.</p>
+
+  <p>The point of asking the MVO question is not to fire anyone. The point is to figure out what coherence looks like, so that the path between today and coherent has a destination.</p>
+
+  <h2>Tools are not transformation</h2>
+
+  <p>The hardest pattern to break is the assumption that tool adoption is the path to AI-native.</p>
+
+  <p>It is not. I have written this before, and I keep writing it because the assumption is everywhere. Adding tools to a company that has not redesigned its work does not change the work. It changes the speed at which the existing work happens, which is a real but bounded gain. The gain plateaus the moment the work itself becomes the constraint.</p>
+
+  <p>Transformation starts when the company itself reorganizes. The mandates get unbundled. The workflows get rewritten to assume agents in the loop. The canon gets formalized so the agents have somewhere to read. The records get kept so the company stops re-deciding its own past. The decision rights get delegated downward because the leadership team can no longer be the bottleneck for every operational call.</p>
+
+  <p>None of that comes from procurement.</p>
+
+  <p><em>You cannot become AI-native through tool procurement.</em> You become AI-native by doing the redesign work the tools force you to confront.</p>
+
+  <h2>What the redesign actually looks like in motion</h2>
+
+  <p>Across what I've read, watched, and tried in our own build: a few patterns repeat.</p>
+
+  <p>Teams get smaller and more temporary. The frontier-team model — small, cross-functional, formed around a specific problem, dissolved when the problem is held — replaces the standing-functional-team model. There are still standing teams, but the work flows through frontier teams that compose and decompose around the actual mandates.</p>
+
+  <p>The intelligence layer gets staffed, not just stood up. Someone owns the canon. Someone owns the workflow registry. Someone owns the agent inventory and supervision protocols. These are not part-time mandates added to existing jobs. They are real roles, with budget and authority, because the substrate has to be maintained or it rots.</p>
+
+  <p>Performance reviews change shape. The question is no longer "what did you produce?" — agents produced most of it. The question is "what did you decide, what did you design, what did you supervise, what did you redirect when the system started producing the wrong thing?" The output stops being a useful proxy for the work.</p>
+
+  <p>Hiring changes shape. The interview process tests for the kind of thinking I described in <a href="./ai-native-people.html" class="xlink">the field note on AI-native people</a> — externalized cognition, taste, judgment, the ability to know what not to delegate. The candidates who score well on that are not the same candidates who scored well on the previous generation of interviews.</p>
+
+  <p>Capital allocation gets re-grained. The OpEx-vs-headcount distinction gets more interesting because the same mandate can be held in either bucket. Decisions about where to put a dollar become decisions about which mandate to strengthen, which is a structurally different question than "should we hire?"</p>
+
+  <h2>Why most companies cannot get there from here</h2>
+
+  <p>The honest part of this argument is that most existing companies cannot make this shift, and the reasons are not technical.</p>
+
+  <p>One: legacy structure. The org chart is the inertia. Every reporting line, every job description, every comp band, every quarterly review is built around the structure that exists. Re-grounding any of this is politically expensive. Re-grounding all of it is so expensive that most leadership teams will not attempt it — they will instead try to layer AI on top of the existing structure and call that transformation.</p>
+
+  <p>Two: identity. A company that has been running on its old structure for twenty years is, in some sense, that structure. Asking it to redesign itself is asking it to admit that the structure was an artifact of a particular historical moment that has passed. Most leadership teams cannot say this out loud to themselves, let alone to the company.</p>
+
+  <p>Three: industrial-era management instincts. The senior leaders running most companies came up through a management tradition built for human-centric coordination. The instincts that got them to the C-suite are the wrong instincts for the AI-native moment. They are good at hiring, motivating, organizing, and supervising humans. They are not yet good at designing systems where humans and machines compose. The instinct to "manage" gets in the way of designing the system that no longer needs to be managed in the old sense.</p>
+
+  <p>The companies that will make this transition are mostly the ones being built right now, that get to skip the legacy structure entirely. Some existing companies will make the shift. They will do it under a leadership team that is willing to redesign the org from the MVO question down. There will not be many of them.</p>
+
+  <h2>The competitive frame</h2>
+
+  <p>The competitive consequence is that the gap between AI-native and "uses AI" is going to be very large, and it is going to compound.</p>
+
+  <p>The revenue-per-employee gap between the AI-native shops everyone is watching and the median SaaS company is wide and getting wider. That gap does not close from the other side. It does not close because the SaaS shop adopts more AI tools. It closes only if the SaaS shop redesigns its operating model — and most SaaS shops will not.</p>
+
+  <p>Within a decade, this will be one of the largest sources of competitive divergence in the economy. Two companies in the same market, one redesigned for AI, one not. The redesigned one ships faster, costs less to run, retains better-quality humans because the work is more interesting, compounds its institutional memory through the intelligence layer, and is less exposed to the kinds of coordination overhead that consume the unredesigned shop. The unredesigned shop will look perfectly normal from the outside and will be slowly losing the market.</p>
+
+  <blockquote class="pullquote">The first AI-native advantage is not automation. It is legibility, composability, and continuous redistribution of work.</blockquote>
+
+  <h2>Closing</h2>
+
+  <p>If you are a leader at a company that has been buying AI tools and waiting for transformation to show up, this is the part of the essay I would highlight.</p>
+
+  <p>The tools are not the transformation. The transformation is the redesign. The redesign is uncomfortable, political, and expensive, which is exactly why most companies will not do it.</p>
+
+  <p>The companies that do will not look like SaaS companies with copilots. They will look like something else — smaller teams, sharper mandates, a real intelligence layer, a different shape on every page of the org chart.</p>
+
+  <p>That is what AI-native actually means. Not a tool stack. A redesign.</p>
+
+  <p>And the companies that do the redesign will not be loud about it. They will be quiet about it, and they will pull away.</p>
+
+  <p><span class="refrain">The bet is structural. The leverage is in the shape.</span></p>
+
+</article>
+
+<div class="next-article-block">
+  <div class="next-article">
+      <span class="label">Next field note</span>
+      <a href="./agent-memory-is-not-one-thing.html">Agent Memory Is Not One Thing. It's Five.</a>
+    </div>
+</div>
+
+<footer class="article-footer">
+
+  <section class="article-cta reveal">
+    <div class="article-cta-content">
+      <div>
+        <div class="eyebrow"><span class="rule"></span><span>The next step</span></div>
+        <h3>The Compression Audit is <em>how AI-native gets built.</em></h3>
+        <p>Two weeks. We help your leadership team answer the MVO question honestly — what would you build from scratch today, given what AI can absorb — and map the path from your current org to that one. Not a layoff plan. A redesign with a destination.</p>
+      </div>
+      <div class="ctas">
+        <a href="../audit.html" class="cta-amber-on-dark">
+          See the audit
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-row">
+      <a href="/" class="brand">
+        <span class="brand-logo" style="width:26px;height:26px;">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65"
+                  stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M32 28 V72 L68 28 V72"
+                  stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="brand-wordmark">
+          <svg width="132" height="33" viewBox="0 0 132 33" aria-label="CMPRSSN" role="img">
+            <text x="0" y="24" font-family="'Decima Mono Pro',ui-monospace,monospace"
+                  font-size="22" font-weight="400" letter-spacing="7.04"
+                  fill="currentColor">CMPRSSN</text>
+          </svg>
+        </span>
+      </a>
+      <div>
+        <a href="mailto:growth@cmprssn.xyz" class="footer-mail">growth@cmprssn.xyz</a>
+      </div>
+    </div>
+    <p class="footer-line">
+      CMPRSSN · Closing the coupling gap, one workflow at a time.<br>
+      © <span data-current-year>2026</span> Compression · Architecting organizations for the agentic era.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Keep the © year fresh without pulling in a build step.
+  document.querySelectorAll('[data-current-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
+</script>
+<script src="/cmprssn.js?v=3" defer></script>
+</body>
+</html>

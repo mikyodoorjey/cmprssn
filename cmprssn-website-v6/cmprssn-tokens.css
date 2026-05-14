@@ -1,0 +1,182 @@
+/* CMPRSSN — shared tokens + base styles for subpages.
+   Index has its own inline copy; subpages link this file. */
+@font-face { font-family: 'Parabole Trial'; src: url('https://framerusercontent.com/assets/0y4e2dnjbvXv2rIsO8uj8iBVs.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Parabole Trial'; src: url('https://framerusercontent.com/assets/dQxMUUKNHsT2SlXtsq1ClLU9uiA.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Parabole Trial'; src: url('https://framerusercontent.com/assets/PX9JSONDIAO3ZJodmW6Qu6ujDc.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Decima Mono Pro'; src: url('https://framerusercontent.com/assets/EsB0jFgJKAyzoh1vb6s3GNYOF4Q.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap');
+
+:root {
+  --bg:#F8F5EC; --bg-elev-1:#F3F2E7; --bg-elev-2:#E5E4DB;
+  --ink:#191918; --ink-dark:rgba(25,25,24,0.92);
+  --fg-muted:rgba(25,25,24,0.72); --fg-subtle:rgba(25,25,24,0.60);
+  --line:rgba(25,25,24,0.10); --line-strong:rgba(25,25,24,0.30);
+  --accent:#FCAA2D;
+  --font-display:'Parabole Trial',Georgia,serif;
+  --font-text:'Inter',system-ui,sans-serif;
+  --font-mono:'Decima Mono Pro',ui-monospace,monospace;
+  --pad-x:clamp(24px,4vw,56px); --max-w:1400px;
+  --section-y:clamp(80px,10vw,160px);
+}
+
+/* ---- Surface card — shared base for any "soft-paper card that gets warmer + lifts on hover".
+       Used by .method-card (home) and .stage-card (methodology). One source of truth. ---- */
+.method-card, .stage-card {
+  position: relative;
+  background: rgba(243, 242, 231, 0.5);
+  transition: border-color 320ms cubic-bezier(0.2,0.8,0.2,1),
+              background 320ms ease,
+              transform 320ms cubic-bezier(0.2,0.8,0.2,1),
+              box-shadow 320ms ease;
+}
+.method-card::before, .stage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 360ms cubic-bezier(0.2,0.8,0.2,1);
+}
+.method-card:hover, .stage-card:hover {
+  border-color: var(--ink-dark);
+  background: #FFFCF2;
+  transform: translateY(-3px);
+  box-shadow: 0 22px 40px -22px rgba(25,25,24,0.16);
+}
+.method-card:hover::before, .stage-card:hover::before { transform: scaleX(1); }
+
+/* ---- Reveal + compress-on-enter animations (used by Nav, home page, and subpages) ---- */
+.compress-on-enter{letter-spacing:0.06em;opacity:0;transform:translateY(12px);transition:letter-spacing 1200ms cubic-bezier(0.4,0,0.2,1),opacity 600ms cubic-bezier(0.4,0,0.2,1),transform 600ms cubic-bezier(0.4,0,0.2,1);will-change:letter-spacing,transform,opacity;}
+.compress-on-enter.is-in{letter-spacing:-0.03em;opacity:1;transform:translateY(0);}
+.reveal{opacity:0;transform:translateY(12px);transition:opacity 600ms cubic-bezier(0.4,0,0.2,1),transform 600ms cubic-bezier(0.4,0,0.2,1);}
+.reveal.is-in{opacity:1;transform:translateY(0);}
+*{box-sizing:border-box;}
+html,body{margin:0;background:var(--bg);color:var(--ink);}
+body{font-family:var(--font-text);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:var(--max-w);margin:0 auto;padding-left:var(--pad-x);padding-right:var(--pad-x);}
+
+/* Nav (used by mounted React Nav) */
+.nav-shell{transition:background 240ms ease,border-color 240ms ease,backdrop-filter 240ms ease;background:rgba(248,245,236,0.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.nav-shell.is-scrolled{background:rgba(248,245,236,0.94);}
+.wordmark-host{position:relative;display:inline-block;min-width:0;flex:0 1 auto;--wm-spacing:0.32em;--wm-size:20px;--wm-progress:0;}
+.wordmark-host .wm-layer{font-family:'Decima Mono Pro',ui-monospace,monospace;font-size:var(--wm-size);letter-spacing:var(--wm-spacing);text-transform:uppercase;line-height:1;white-space:nowrap;display:inline-block;transition:opacity 220ms ease;}
+.nav-link{position:relative;font-family:var(--font-text);font-weight:500;font-size:16px;color:var(--ink);padding-bottom:4px;transition:color 200ms ease;white-space:nowrap;}
+.nav-link::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform 360ms cubic-bezier(0.2,0.8,0.2,1);}
+.nav-link:hover::after,.nav-link.is-active::after{transform:scaleX(1);transform-origin:left;}
+.hamburger{display:none;width:36px;height:36px;background:transparent;border:0;padding:0;cursor:pointer;position:relative;color:var(--ink);}
+.hamburger span{position:absolute;left:8px;right:8px;height:2px;background:currentColor;transition:transform 320ms cubic-bezier(0.2,0.8,0.2,1),opacity 200ms ease,top 320ms cubic-bezier(0.2,0.8,0.2,1);border-radius:0;}
+.hamburger span:nth-child(1){top:9px;}.hamburger span:nth-child(2){top:17px;}.hamburger span:nth-child(3){top:25px;}
+.hamburger.is-open span:nth-child(1){top:17px;transform:rotate(45deg);}
+.hamburger.is-open span:nth-child(2){opacity:0;}
+.hamburger.is-open span:nth-child(3){top:17px;transform:rotate(-45deg);}
+.mobile-sheet{position:fixed;left:0;right:0;top:0;background:var(--bg);z-index:49;transform:translateY(-100%);transition:transform 380ms cubic-bezier(0.2,0.8,0.2,1);padding:96px var(--pad-x) 56px;display:flex;flex-direction:column;gap:8px;min-height:100dvh;border-bottom:1px solid var(--line);}
+.mobile-sheet.is-open{transform:translateY(0);}
+.mobile-sheet a.sheet-link{font-family:var(--font-display);font-weight:400;font-size:clamp(40px,9vw,64px);letter-spacing:-0.02em;line-height:1.1;color:var(--ink);padding:14px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
+.mobile-sheet .sheet-cta{margin-top:32px;}
+@media (max-width:1024px){.nav-shell .nav-row nav{gap:24px !important;}}
+@media (max-width:720px){.nav-shell .nav-row nav.desktop-nav{display:none !important;}.hamburger{display:block;}}
+
+/* ---- Eyebrow (mono uppercase metadata, optional 28×1px amber rule) ----
+   Used on every page. Pattern: <div class="eyebrow"><span class="rule"></span><span>Label</span></div>
+   Add `.on-dark` modifier when placing over a dark band.
+   See design.md → Components → .eyebrow */
+.eyebrow{font-family:var(--font-mono);font-weight:500;font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:var(--fg-subtle);display:inline-flex;align-items:center;gap:12px;}
+.eyebrow .rule{display:inline-block;width:28px;height:1px;background:var(--accent);flex:0 0 28px;}
+.eyebrow.on-dark{color:rgba(248,245,236,0.72);}
+
+/* ---- CTAs ----
+   Four canonical buttons. The hover affordance is identical on all of them:
+   a colored panel slides up from below via a ::before pseudo, and the arrow
+   icon moves (3px, -3px). See design.md → Components → CTAs.
+   If you need a sub-variant, give it a new class name. DO NOT redeclare
+   .cta-amber* on a page. */
+.cta-amber,.cta-ghost,.cta-amber-on-dark,.cta-ghost-on-dark{
+  position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-text);font-weight:500;font-size:14px;letter-spacing:0.02em;
+  padding:14px 22px;border-radius:2px;overflow:hidden;
+  transition:color 280ms ease,border-color 280ms ease;
+}
+.cta-amber{background:var(--accent);color:var(--ink);border:1px solid var(--accent);}
+.cta-amber::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--ink);transform:translateY(101%);transition:transform 380ms cubic-bezier(0.2,0.8,0.2,1);}
+.cta-amber:hover{color:var(--bg);border-color:var(--ink);}
+.cta-amber:hover::before{transform:translateY(0);}
+
+.cta-ghost{background:transparent;color:var(--ink);border:1px solid var(--line-strong);}
+.cta-ghost::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--ink);transform:translateY(101%);transition:transform 380ms cubic-bezier(0.2,0.8,0.2,1);}
+.cta-ghost:hover{color:var(--bg);border-color:var(--ink);}
+.cta-ghost:hover::before{transform:translateY(0);}
+
+.cta-amber-on-dark{background:var(--accent);color:var(--ink);border:1px solid var(--accent);}
+.cta-amber-on-dark::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--bg);transform:translateY(101%);transition:transform 380ms cubic-bezier(0.2,0.8,0.2,1);}
+.cta-amber-on-dark:hover{color:var(--ink);border-color:var(--bg);}
+.cta-amber-on-dark:hover::before{transform:translateY(0);}
+
+.cta-ghost-on-dark{background:transparent;color:var(--bg);border:1px solid rgba(248,245,236,0.3);}
+.cta-ghost-on-dark::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--bg);transform:translateY(101%);transition:transform 380ms cubic-bezier(0.2,0.8,0.2,1);}
+.cta-ghost-on-dark:hover{color:var(--ink);border-color:var(--bg);}
+.cta-ghost-on-dark:hover::before{transform:translateY(0);}
+
+/* Arrow icon kicks up-right on any CTA hover */
+.cta-amber svg,.cta-ghost svg,.cta-amber-on-dark svg,.cta-ghost-on-dark svg{transition:transform 320ms cubic-bezier(0.2,0.8,0.2,1);}
+.cta-amber:hover svg,.cta-ghost:hover svg,.cta-amber-on-dark:hover svg,.cta-ghost-on-dark:hover svg{transform:translate(3px,-3px);}
+
+/* ---- Page hero (used by methodology, about, any primary content page) ----
+   Eyebrow + h1 + lede + optional CTAs. See design.md → Typography hierarchy. */
+.page-hero{padding:clamp(120px,14vw,200px) 0 clamp(64px,8vw,112px);}
+.page-hero .wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--pad-x);}
+.page-hero .eyebrow{margin-bottom:32px;}
+.page-hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(44px,7.4vw,96px);letter-spacing:-0.02em;line-height:1.02;margin:0 0 32px;color:var(--ink);max-width:18ch;}
+.page-hero h1 em{font-style:italic;font-weight:500;color:var(--accent);}
+.page-hero .lede{font-family:var(--font-text);font-weight:300;font-size:clamp(18px,1.45vw,21px);line-height:1.55;color:var(--fg-muted);margin:0 0 40px;max-width:60ch;letter-spacing:0;}
+.page-hero .ctas{display:flex;flex-wrap:wrap;gap:12px;}
+
+/* ---- Section shell — generic editorial section, light bg ----
+   <section class="section"><div class="wrap"><div class="eyebrow">...</div><h2>...</h2><p>...</p></div></section> */
+.section{padding-top:clamp(80px,10vw,144px);padding-bottom:clamp(80px,10vw,144px);border-top:1px solid var(--line);}
+.section .wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--pad-x);}
+.section .eyebrow{margin-bottom:24px;}
+.section h2{font-family:var(--font-display);font-weight:400;font-size:clamp(32px,4.8vw,64px);letter-spacing:-0.02em;line-height:1.08;margin:0 0 32px;color:var(--ink);max-width:22ch;}
+.section h2 em{font-style:italic;font-weight:500;color:var(--accent);}
+.section h3{font-family:var(--font-display);font-weight:500;font-size:clamp(22px,2.2vw,28px);letter-spacing:-0.01em;line-height:1.2;margin:0 0 12px;color:var(--ink);}
+.section h3 em{font-style:italic;color:var(--accent);}
+.section p{font-family:var(--font-text);font-size:clamp(16px,1.2vw,18px);line-height:1.7;color:var(--fg-muted);margin:0 0 18px;max-width:64ch;}
+.section p em{font-style:italic;color:var(--ink);}
+
+/* ---- Closing band — dark CTA section, used at bottom of primary pages ----
+   Markup:
+     <section class="closing">
+       <div class="wrap">
+         <div class="closing-grid">
+           <div><eyebrow on-dark> + h2 + p</div>
+           <div class="ctas">CTAs</div>
+         </div>
+       </div>
+     </section>
+   .closing-grid is the canonical inner 2-col 8fr/4fr layout. Pages with
+   simpler closing CTAs may omit it. */
+.closing{background:var(--ink);color:var(--bg);padding-top:clamp(80px,10vw,144px);padding-bottom:clamp(80px,10vw,144px);margin-top:clamp(64px,8vw,112px);border-top:1px solid var(--line-strong);}
+.closing .wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--pad-x);}
+.closing-grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,4vw,48px);align-items:end;}
+@media (min-width:720px){.closing-grid{grid-template-columns:8fr 4fr;gap:40px;}}
+.closing .eyebrow{margin-bottom:16px;}
+.closing h2{font-family:var(--font-display);font-weight:400;font-size:clamp(32px,4.4vw,56px);letter-spacing:-0.02em;line-height:1.08;color:var(--bg);margin:0 0 24px;max-width:22ch;}
+.closing h2 em{font-style:italic;color:var(--accent);font-weight:500;}
+.closing p{font-family:var(--font-text);font-size:16px;line-height:1.6;color:rgba(248,245,236,0.72);margin:0;max-width:48ch;}
+/* CTAs left-align when stacked under text; right-align only when sitting in the 4fr column (≥720px). */
+.closing .ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-start;align-items:end;}
+@media (min-width:720px){.closing .ctas{justify-content:flex-end;}}
+
+h1.display{font-family:var(--font-display);font-weight:400;letter-spacing:-0.02em;line-height:1.04;font-size:clamp(44px,7.4vw,96px);max-width:18ch;margin:0;}
+h1 em{font-style:italic;font-weight:500;color:var(--accent);}
+.lede{font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--fg-muted);font-weight:300;max-width:60ch;}
+.hero{padding-top:clamp(140px,16vw,200px);padding-bottom:clamp(56px,7vw,96px);}
+.body-text{font-size:17px;line-height:1.75;color:var(--fg-muted);max-width:62ch;margin:24px 0;}
+.body-text em{font-style:italic;color:var(--ink);}
+.placeholder{margin-top:64px;padding:48px;border:1px dashed var(--line-strong);background:var(--bg-elev-1);border-radius:2px;}
+.placeholder h2{font-family:var(--font-display);font-weight:500;font-size:clamp(24px,2.6vw,36px);letter-spacing:-0.02em;margin:0 0 12px;}
+.placeholder p{margin:0;color:var(--fg-muted);max-width:62ch;font-size:16px;line-height:1.65;}

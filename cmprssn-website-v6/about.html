@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About — CMPRSSN</title>
+<meta name="description" content="Architecting organizations for the era of ubiquitous intelligence. CMPRSSN redesigns teams and departments from first principles to enable agent-native operating models.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Cpath d='M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65' stroke='%23191918' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 28 V72 L68 28 V72' stroke='%23191918' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://framerusercontent.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://framerusercontent.com/assets/0y4e2dnjbvXv2rIsO8uj8iBVs.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://framerusercontent.com/assets/dQxMUUKNHsT2SlXtsq1ClLU9uiA.woff2" crossorigin>
+<link rel="stylesheet" href="cmprssn-tokens.css">
+<style>
+  /* ABOUT PAGE — page-specific layout only.
+     Hero, .section, .closing, .eyebrow, .cta-*, .stage-card all live in
+     cmprssn-tokens.css. See design.md → File map. */
+
+  /* Team — editorial roster, two groups (founders + delivery) */
+  .roster { margin-top: clamp(40px, 5vw, 56px); border-top: 1px solid var(--line-strong); }
+  .roster-group + .roster-group { margin-top: clamp(48px, 5vw, 64px); }
+  .roster-group-label {
+    padding-top: clamp(24px, 3vw, 36px);
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    margin-bottom: clamp(24px, 3vw, 32px);
+  }
+  .roster-list { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); }
+  .roster-member {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: clamp(24px, 3vw, 32px) 0 clamp(24px, 3vw, 32px) 24px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: background 280ms ease;
+    cursor: default;
+  }
+  @media (min-width: 720px) {
+    .roster-member { grid-template-columns: 240px 1fr; gap: 32px; align-items: baseline; }
+  }
+  .roster-member::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+    background: var(--accent); transform: scaleY(0); transform-origin: top;
+    transition: transform 280ms cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .roster-member:hover { background: rgba(252,170,45,0.03); }
+  .roster-member:hover::before { transform: scaleY(1); }
+  .roster-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(20px, 1.9vw, 24px);
+    letter-spacing: -0.01em;
+    line-height: 1.18;
+    color: var(--ink);
+    margin: 0;
+  }
+  .roster-name em { font-style: italic; color: var(--accent); }
+  .roster-bio {
+    font-family: var(--font-text);
+    font-size: clamp(15px, 1.15vw, 17px);
+    line-height: 1.6;
+    color: var(--fg-muted);
+    margin: 0;
+    max-width: 60ch;
+  }
+  .roster-bio em { font-style: italic; color: var(--ink); }
+
+  /* Community callout — single-card editorial block */
+  .community-card {
+    margin-top: clamp(32px, 4vw, 48px);
+    padding: clamp(28px, 3vw, 40px);
+    background: rgba(243, 242, 231, 0.5);
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--accent);
+  }
+  .community-card .label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .community-card h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(22px, 2.2vw, 28px);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .community-card h3 em { font-style: italic; color: var(--accent); }
+  .community-card p {
+    font-family: var(--font-text);
+    font-size: clamp(15px, 1.15vw, 17px);
+    line-height: 1.65;
+    color: var(--fg-muted);
+    margin: 0;
+    max-width: 64ch;
+  }
+
+  /* How — three stage cards summarising Diagnose / Redesign / Deploy */
+  .how-grid {
+    margin-top: clamp(32px, 4vw, 48px);
+    display: grid; grid-template-columns: 1fr; gap: 16px;
+  }
+  @media (min-width: 900px) {
+    .how-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  }
+  .how-card {
+    padding: clamp(28px, 2.8vw, 40px);
+    height: 100%; display: flex; flex-direction: column;
+    border: 1px solid var(--line);
+  }
+  .how-card .how-step {
+    font-family: var(--font-mono); font-size: 14px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--fg-subtle); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+    transition: color 280ms ease;
+  }
+  .how-card .how-step .step-dash {
+    display: inline-block; height: 1px; width: 24px;
+    background: currentColor; opacity: 0.5;
+    transition: width 320ms cubic-bezier(0.2,0.8,0.2,1), opacity 280ms ease;
+  }
+  .how-card:hover .how-step { color: var(--ink); }
+  .how-card:hover .how-step .step-dash { width: 32px; opacity: 1; }
+  .how-card h3 {
+    font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 30px);
+    font-weight: 500; letter-spacing: -0.01em; line-height: 1.15;
+    margin: 0 0 16px;
+  }
+  .how-card h3 em { font-style: italic; color: var(--accent); }
+  .how-card p {
+    font-family: var(--font-text); font-size: 16px; line-height: 1.65;
+    color: var(--fg-muted); margin: 0;
+  }
+  .how-card p em { font-style: italic; color: var(--ink); }
+
+  /* The opening question — editorial light section (same bg as the rest of the page) */
+  .question-band { padding: clamp(96px, 12vw, 160px) 0; border-top: 1px solid var(--line); }
+  .question-band .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad-x); }
+  .question-band .eyebrow { margin-bottom: clamp(40px, 5vw, 56px); }
+  .question-band-lede {
+    font-family: var(--font-text);
+    font-weight: 300;
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.55;
+    color: var(--fg-muted);
+    margin: 0 0 clamp(40px, 5vw, 56px);
+    max-width: 56ch;
+  }
+  .question-band-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(28px, 4vw, 52px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 clamp(40px, 5vw, 56px);
+    max-width: 26ch;
+  }
+  .question-band-quote em { color: var(--accent); font-style: italic; }
+  .question-band-after {
+    font-family: var(--font-text);
+    font-size: clamp(16px, 1.2vw, 18px);
+    line-height: 1.65;
+    color: var(--fg-muted);
+    margin: 0;
+    max-width: 56ch;
+  }
+  .question-band-after em { font-style: italic; color: var(--ink); }
+</style>
+<style>
+/* Footer (shared across subpages) */
+.site-footer{padding-left:var(--pad-x);padding-right:var(--pad-x);padding-bottom:32px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding-top:32px;border-top:1px solid var(--line);}
+.footer-row{display:flex;flex-direction:column;gap:24px;justify-content:space-between;align-items:flex-start;}
+@media (min-width:760px){.footer-row{flex-direction:row;align-items:center;}}
+.footer-mail{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-muted);}
+.footer-line{font-family:var(--font-mono);margin-top:64px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-subtle);max-width:60ch;}
+@media (min-width:760px){.footer-line{display:none;}}
+/* Nav layout for subpages */
+.nav-shell{position:fixed;top:0;left:0;right:0;z-index:50;}
+.nav-row{display:flex;align-items:center;justify-content:space-between;padding-top:18px;padding-bottom:18px;gap:16px;}
+.brand{display:flex;align-items:center;gap:14px;color:var(--ink);min-width:0;}
+.brand-logo{width:24px;height:24px;display:inline-block;transform-origin:center;transition:transform 200ms cubic-bezier(0.2,0.8,0.2,1);}
+.brand-logo svg{width:100%;height:100%;overflow:visible;}
+.brand-wordmark{display:inline-flex;align-items:center;flex:0 0 auto;}
+.brand-wordmark svg{display:block;overflow:visible;}
+.desktop-nav{display:flex;align-items:center;gap:36px;}
+</style>
+</head>
+<body>
+
+<header class="nav-shell">
+  <div class="wrap nav-row">
+    <a href="/" class="brand" aria-label="CMPRSSN home">
+      <span class="brand-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path data-logo="c"
+                d="M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65"
+                stroke="currentColor" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" />
+          <path data-logo="n"
+                d="M32 28 V72 L68 28 V72"
+                stroke="currentColor" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <span class="brand-wordmark">
+        <svg width="120" height="30" viewBox="0 0 120 30" aria-label="CMPRSSN" role="img">
+          <text x="0" y="22"
+                font-family="'Decima Mono Pro',ui-monospace,monospace"
+                font-size="20" font-weight="400"
+                letter-spacing="6.4"
+                fill="currentColor" stroke="currentColor" stroke-width="1"
+                paint-order="stroke fill" stroke-linejoin="round">CMPRSSN</text>
+        </svg>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary">
+      <a href="/methodology.html" class="nav-link">Methodology</a>
+      <a href="/audit.html" class="nav-link">Audit</a>
+      <a href="/field-notes/" class="nav-link">Field Notes</a>
+      <a href="/about.html" class="nav-link is-active">About</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-sheet">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-sheet" id="mobile-sheet" aria-hidden="true">
+  <a href="/methodology.html" class="sheet-link"><span>Methodology</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/audit.html" class="sheet-link"><span>Audit</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/field-notes/" class="sheet-link"><span>Field Notes</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/about.html" class="sheet-link"><span>About</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <div class="sheet-cta">
+    <a href="mailto:growth@cmprssn.xyz" class="cta-amber" style="font-size:16px;padding:16px 24px;">
+      Book a conversation
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="page-hero">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="rule"></span><span>CMPRSSN · About</span></div>
+    <h1>Architecting organizations for <em>the era of ubiquitous intelligence.</em></h1>
+    <p class="lede">The technology is ready. Most organizations aren't. Today's agent deployments inherit the same latency, approval queues, political seams, data fragmentation and industrial-era design debt that defines most companies. We redesign teams and departments from first principles to enable agent-native operating models — guided by the question of what organizations are and should become as we move toward AGI.</p>
+    <div class="ctas">
+      <a href="./audit.html" class="cta-amber">
+        Start with the Audit
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </a>
+      <a href="./field-notes/" class="cta-ghost">
+        Read the thesis
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW — Diagnose / Redesign / Deploy
+     ============================================================ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="rule"></span><span>How</span></div>
+    <h2 class="reveal">Diagnose. Redesign. <em>Deploy.</em></h2>
+    <p class="reveal">There are a handful of core AI/agentic adoption patterns in mid-size companies, each with their own pitfalls and root-cause constraints. We meet teams where they are and take the right next steps for their context.</p>
+
+    <div class="how-grid">
+      <article class="how-card reveal">
+        <div class="how-step">
+          <span class="step-dash"></span>
+          <span>Diagnose</span>
+        </div>
+        <h3>Identify where you are <em>on the agentic maturity matrix.</em></h3>
+        <p>There are a handful of core AI/agentic adoption patterns in mid-size companies that have corresponding pitfalls and root-cause constraints. We help teams identify where they sit and take the right next steps for their unique context.</p>
+      </article>
+
+      <article class="how-card reveal" data-delay="120">
+        <div class="how-step">
+          <span class="step-dash"></span>
+          <span>Redesign</span>
+        </div>
+        <h3>Rebuild work for <em>human-agent teams.</em></h3>
+        <p>We redesign work starting with workflows, roles and mandates, decision rights, and data structures. These compose into a company-wide, machine-readable shared brain that compounds knowledge and systemic coherence.</p>
+      </article>
+
+      <article class="how-card reveal" data-delay="240">
+        <div class="how-step">
+          <span class="step-dash"></span>
+          <span>Deploy</span>
+        </div>
+        <h3>Ship <em>technology-agnostic</em> agent fleets.</h3>
+        <p>We take a technology-agnostic approach to building and deploying agent fleets tailored to each client context. Track transformation via our Atlas frontend — agents and humans connected to the organization-wide shared brain.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TEAM
+     ============================================================ -->
+<section class="section" id="team">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="rule"></span><span>Team</span></div>
+    <h2 class="reveal">Compression is intimate work, <em>and we staff it that way.</em></h2>
+
+    <div class="roster reveal">
+
+      <div class="roster-group">
+        <div class="roster-group-label">Founders</div>
+        <div class="roster-list">
+
+          <div class="roster-member">
+            <h3 class="roster-name">Mikyo Clark</h3>
+            <p class="roster-bio"><em>Holds the room.</em> Owns executive relationships, narrative, and the through-line from first conversation to deployed agent. Came up at the intersection of crypto, community, and collective intelligence.</p>
+          </div>
+
+          <div class="roster-member">
+            <h3 class="roster-name">Ryan Van Sickle</h3>
+            <p class="roster-bio"><em>Designs the instruments.</em> The Atlas, the Compression Scale, the diagnostic frameworks, the agent-native delivery system. Thinks in systems, builds in layers.</p>
+          </div>
+
+          <div class="roster-member">
+            <h3 class="roster-name">Kyle Weiss</h3>
+            <p class="roster-bio"><em>Builds the intelligence layer.</em> Bridges client context to infrastructure so the diagnosis becomes a living, queryable, scalable system.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="roster-group">
+        <div class="roster-group-label">Delivery</div>
+        <div class="roster-list">
+
+          <div class="roster-member">
+            <h3 class="roster-name">Yalor Mewn</h3>
+            <p class="roster-bio"><em>Listens for the signals.</em> Leads the global community and client adoption guilds. Translates leadership ambition into operational capacity.</p>
+          </div>
+
+          <div class="roster-member">
+            <h3 class="roster-name">Jeremias Pedreira</h3>
+            <p class="roster-bio"><em>Runs the machinery.</em> Sprint cadence, AI-native operations, client automations. The unglamorous discipline that turns legacy processes into intelligent systems.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMMUNITY
+     ============================================================ -->
+<section class="section" id="community">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="rule"></span><span>Community</span></div>
+    <h2 class="reveal">A working group, <em>not a customer list.</em></h2>
+    <p class="reveal">CMPRSSN is built alongside a community of operators thinking about the same question from different angles.</p>
+
+    <div class="community-card reveal">
+      <div class="label">Agentic Intelligence Research Program</div>
+      <h3>Fifty interviews. <em>Two tracks.</em></h3>
+      <p><strong>Frontier</strong> — born-agentic operators building AI-native companies from day one.<br>
+         <strong>Enterprise</strong> — legacy-transformation leaders inside companies that were not built this way.<br>
+         Publishing <em>State of Agentic Transformation</em>, Q3 2026.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     THE OPENING QUESTION — dark band
+     ============================================================ -->
+<section class="question-band">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="rule"></span><span>The question we open with</span></div>
+    <p class="question-band-lede">Every engagement begins with Jack Dorsey's question. We hold ourselves to it as much as we hold our clients to it:</p>
+    <blockquote class="question-band-quote">What does your company understand that is genuinely hard to understand, and <em>is that understanding getting deeper every day?</em></blockquote>
+    <p class="question-band-after">Find the deep understanding. Build the infrastructure around it. <em>That is the work.</em></p>
+  </div>
+</section>
+
+<!-- ============================================================
+     CLOSING CTAs
+     ============================================================ -->
+<section class="closing">
+  <div class="wrap">
+    <div class="closing-grid reveal">
+      <div>
+        <div class="eyebrow on-dark"><span class="rule"></span><span>The next step</span></div>
+        <h2>The thesis is the easy part. <em>The audit is the work.</em></h2>
+        <p>Two weeks. We score your operating model, name the binding constraint, and ship the first slice of the living map your team can act on.</p>
+      </div>
+      <div class="ctas">
+        <a href="mailto:growth@cmprssn.xyz?subject=Book%20a%20conversation" class="cta-amber-on-dark">
+          Book a conversation
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+        <a href="./audit.html" class="cta-ghost-on-dark">
+          See the audit
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-row">
+      <a href="/" class="brand">
+        <span class="brand-logo" style="width:26px;height:26px;">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65"
+                  stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M32 28 V72 L68 28 V72"
+                  stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="brand-wordmark">
+          <svg width="132" height="33" viewBox="0 0 132 33" aria-label="CMPRSSN" role="img">
+            <text x="0" y="24" font-family="'Decima Mono Pro',ui-monospace,monospace"
+                  font-size="22" font-weight="400" letter-spacing="7.04"
+                  fill="currentColor">CMPRSSN</text>
+          </svg>
+        </span>
+      </a>
+      <div>
+        <a href="mailto:growth@cmprssn.xyz" class="footer-mail">growth@cmprssn.xyz</a>
+      </div>
+    </div>
+    <p class="footer-line">
+      CMPRSSN · Closing the coupling gap, one workflow at a time.<br>
+      © <span data-current-year>2026</span> Compression · Architecting organizations for the agentic era.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Keep the © year fresh without pulling in a build step.
+  document.querySelectorAll('[data-current-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
+</script>
+<script src="/cmprssn.js?v=3" defer></script>
+</body>
+</html>

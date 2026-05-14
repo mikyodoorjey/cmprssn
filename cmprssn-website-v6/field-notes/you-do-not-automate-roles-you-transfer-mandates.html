@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>You Do Not Automate Roles. You Transfer Mandates. — CMPRSSN Field Notes</title>
+<meta name="description" content='"Can AI replace this job?" is the wrong question. The useful unit is the mandate.'>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Cpath d='M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65' stroke='%23191918' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 28 V72 L68 28 V72' stroke='%23191918' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://framerusercontent.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://framerusercontent.com/assets/0y4e2dnjbvXv2rIsO8uj8iBVs.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://framerusercontent.com/assets/dQxMUUKNHsT2SlXtsq1ClLU9uiA.woff2" crossorigin>
+<link rel="stylesheet" href="../cmprssn-tokens.css">
+<link rel="stylesheet" href="field-notes.css">
+<style>
+/* Footer (shared across subpages) */
+.site-footer{padding-left:var(--pad-x);padding-right:var(--pad-x);padding-bottom:32px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding-top:32px;border-top:1px solid var(--line);}
+.footer-row{display:flex;flex-direction:column;gap:24px;justify-content:space-between;align-items:flex-start;}
+@media (min-width:760px){.footer-row{flex-direction:row;align-items:center;}}
+.footer-mail{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-muted);}
+.footer-line{font-family:var(--font-mono);margin-top:64px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-subtle);max-width:60ch;}
+@media (min-width:760px){.footer-line{display:none;}}
+/* Nav layout for subpages */
+.nav-shell{position:fixed;top:0;left:0;right:0;z-index:50;}
+.nav-row{display:flex;align-items:center;justify-content:space-between;padding-top:18px;padding-bottom:18px;gap:16px;}
+.brand{display:flex;align-items:center;gap:14px;color:var(--ink);min-width:0;}
+.brand-logo{width:24px;height:24px;display:inline-block;transform-origin:center;transition:transform 200ms cubic-bezier(0.2,0.8,0.2,1);}
+.brand-logo svg{width:100%;height:100%;overflow:visible;}
+.brand-wordmark{display:inline-flex;align-items:center;flex:0 0 auto;}
+.brand-wordmark svg{display:block;overflow:visible;}
+.desktop-nav{display:flex;align-items:center;gap:36px;}
+</style>
+</head>
+<body>
+
+<header class="nav-shell">
+  <div class="wrap nav-row">
+    <a href="/" class="brand" aria-label="CMPRSSN home">
+      <span class="brand-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path data-logo="c"
+                d="M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65"
+                stroke="currentColor" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" />
+          <path data-logo="n"
+                d="M32 28 V72 L68 28 V72"
+                stroke="currentColor" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <span class="brand-wordmark">
+        <svg width="120" height="30" viewBox="0 0 120 30" aria-label="CMPRSSN" role="img">
+          <text x="0" y="22"
+                font-family="'Decima Mono Pro',ui-monospace,monospace"
+                font-size="20" font-weight="400"
+                letter-spacing="6.4"
+                fill="currentColor" stroke="currentColor" stroke-width="1"
+                paint-order="stroke fill" stroke-linejoin="round">CMPRSSN</text>
+        </svg>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary">
+      <a href="/methodology.html" class="nav-link">Methodology</a>
+      <a href="/audit.html" class="nav-link">Audit</a>
+      <a href="/field-notes/" class="nav-link is-active">Field Notes</a>
+      <a href="/about.html" class="nav-link">About</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-sheet">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-sheet" id="mobile-sheet" aria-hidden="true">
+  <a href="/methodology.html" class="sheet-link"><span>Methodology</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/audit.html" class="sheet-link"><span>Audit</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/field-notes/" class="sheet-link"><span>Field Notes</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/about.html" class="sheet-link"><span>About</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <div class="sheet-cta">
+    <a href="mailto:growth@cmprssn.xyz" class="cta-amber" style="font-size:16px;padding:16px 24px;">
+      Book a conversation
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- Hero — aerial of organized land parcels (suggests "decomposed into units that can be moved")
+     IMAGE PROMPT: top-down view of farmland divided into parceled plots; earth tones.
+     Avoid: anything industrial, depopulated, or "tech grid". -->
+<figure class="article-hero" aria-hidden="true">
+  <img src="https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?q=80&w=2400&auto=format&fit=crop" alt="" />
+  <figcaption class="article-hero-caption"><span class="rule"></span><span>Fig 004 · The unit, not the bundle</span></figcaption>
+</figure>
+
+<header class="article-header reveal">
+  <div class="article-eyebrow"><span class="rule"></span><span>Field Note · 04</span></div>
+  <h1 class="article-h1">You Do Not Automate Roles. <em>You Transfer Mandates.</em></h1>
+  <p class="article-dek">"Can AI replace this job?" is the wrong question. It's too coarse to plan against. The useful unit is the mandate — and learning to see roles as bundles of them is the move that turns AI delegation from a debate into a decision.</p>
+  <div class="byline" style="--avatar-url: url('../assets/img/ryan-headshot.png');">
+    <div class="byline-avatar" aria-hidden="true">RVS</div>
+    <div class="byline-meta">
+      <div class="byline-name">Ryan Van Sickle</div>
+      <div class="byline-role">Co-Founder, CMPRSSN</div>
+    </div>
+    <div class="byline-date">
+      <span>Feb 23 · 2026</span>
+      <span class="read">6 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p class="lede">Every time AI comes up in a leadership meeting, someone asks the wrong question.</p>
+
+  <p>"Can AI replace this job?"</p>
+
+  <p>The room divides. One half says yes — confidently, because they have seen the demos. The other half says no — defensively, because the question is rhetorically inflammatory and operationally useless. Both halves are wrong, because the question itself is wrong.</p>
+
+  <p>A job is not a single thing. A job is a bundle.</p>
+
+  <h2>The unit is the mandate</h2>
+
+  <p>I have been calling this unit a <em class="term">mandate</em>. It is smaller than a role and larger than a task. It is not a responsibility area, a RACI cell, or an OKR. Those describe ownership, involvement, or outcomes. A mandate describes <em>a piece of work the organization will hold someone accountable for, with the authority and context that piece of work actually requires.</em></p>
+
+  <p>Roles are compositions of mandates. A title like "Head of Growth" is a label glued to a stack of them, and most companies have never opened the stack.</p>
+
+  <p>That is the whole move. It is the single most useful primitive I know for thinking about AI delegation, and most companies are still planning at the role level — which is the wrong altitude.</p>
+
+  <blockquote class="pullquote">A role is a bundle. AI delegation works at the level of the bundle's parts.</blockquote>
+
+  <h2>Open the bundle</h2>
+
+  <p>Take a real role: Head of Marketing at a 200-person consumer brand.</p>
+
+  <p>If you ask what this person does, you get a job description. If you ask what they are <em>accountable</em> for, you get a list of mandates. The list is usually longer than people expect.</p>
+
+  <ul>
+    <li>Own and maintain the brand voice canon</li>
+    <li>Generate qualified pipeline against quarterly targets</li>
+    <li>Run paid acquisition across the channel mix</li>
+    <li>Maintain the content calendar and approve everything that ships</li>
+    <li>Manage influencer relationships and creator partnerships</li>
+    <li>Report on marketing attribution and channel ROI</li>
+    <li>Maintain the marketing site copy and ensure product launches land</li>
+    <li>Run the customer-facing email program</li>
+    <li>Hire, manage, and develop the marketing team</li>
+    <li>Represent the company in select press conversations</li>
+  </ul>
+
+  <p>Ten mandates. Some of them ship work the company already knows how to delegate. Some of them require taste a model isn't close to having, and isn't getting in the planning horizon you're working in. Some of them are politically delicate and have lived with this role for so long that nobody remembers they are separable.</p>
+
+  <p>They are not the same kind of work. Treating them as a single "job" is what makes the AI delegation conversation impossible.</p>
+
+  <h2>The four-quadrant sort</h2>
+
+  <p>Once the bundle is open, each mandate sorts into one of four buckets.</p>
+
+  <p><em>Delegate to an agent.</em> Attribution reporting. Voice-and-claim QA on draft copy. Pipeline pacing dashboards. Things that have a queryable definition of "right," that produce work an audit could verify, that don't require relationship or taste.</p>
+
+  <p>The bar for delegation is not that the agent is perfect. The bar is that the agent's mistakes are <em>recoverable</em> — that someone notices when the report is off, that the canon governs the QA pass, that there is a human reviewing aggregate output, not every line.</p>
+
+  <p><em>Assist with an agent.</em> Content calendar drafting. Paid acquisition iteration. Email program copy generation. The mandate stays with the human; the agent absorbs the friction. The human spends fewer hours on the mechanical part of the work and more on the parts that compound.</p>
+
+  <p>This is where most of the real value lives in the next two years. Not full delegation. Compression of the mechanical layer.</p>
+
+  <p><em>Keep human.</em> Influencer relationships. The press conversation. The hire-fire-develop loop. Things that depend on read of a specific person in a specific moment, where the cost of a misread is reputational and not recoverable.</p>
+
+  <p>The list of mandates that stay human shrinks every year. But it never goes to zero, and the company that pretends it does is the company that ships an agent into a press conversation it can't take back.</p>
+
+  <p><em>Retire.</em> The mandate that exists because someone added it to the role four years ago and nobody has audited the list since. Most roles have at least one. Marketing sites that nobody reads. Reports that nobody opens. Quarterly rituals that produce a deck and a meeting and no decision.</p>
+
+  <p>The retire bucket is the cheap win. You did not need AI to find it; you needed an audit. AI was just the pressure that made the audit happen.</p>
+
+  <blockquote class="pullquote">The useful question isn't "can AI do this job?" It's "which mandates inside this role have always been delegable?"</blockquote>
+
+  <h2>Why this beats job-replacement framing</h2>
+
+  <p>The job-replacement frame produces three failure modes, every time.</p>
+
+  <p>One: defensive reaction. Anyone whose role is up for review reads the question as a threat and stops being useful in the conversation. The frame turns the people who know the most about the work into the people most invested in obscuring it.</p>
+
+  <p>Two: binary thinking. The room ends up arguing whether AI <em>is or is not</em> ready to replace the role, when the actual answer is that some mandates inside the role are ready today, some will never be, and the work is in the sort.</p>
+
+  <p>Three: the headcount-cut frame becomes the conversation. The C-suite frames the question as reduction, the workforce hears it that way, and the organization spends six months in a defensive crouch instead of doing the redesign the moment actually requires.</p>
+
+  <p>Mandate framing routes around all three.</p>
+
+  <p>It is not threatening, because mandates are smaller than roles — nobody loses their job by having a single mandate move. It is not binary, because each mandate gets its own answer. And it is not headcount-coded, because the most common outcome of a real mandate audit is not "we need fewer people" but "we need people doing fewer things." The role gets sharper. The work gets clearer. The agent shows up in a place where it can actually do useful work without taking the role with it.</p>
+
+  <h2>Mandates are first-class</h2>
+
+  <p>The mandate frame is not a rhetorical move. It is a structural one.</p>
+
+  <p>If your company starts treating mandates as first-class units — written down, owned, transferable, auditable — a few things become possible that were not possible before.</p>
+
+  <p>You can move a mandate between people without re-writing a job description. You can move a mandate between a human and an agent and back again as the work matures. You can audit which mandates exist, which are duplicated, which are orphaned. You can finally answer the question of what a role is actually on the hook for, without using its title.</p>
+
+  <p>You can also start to plan at the right altitude. The question is no longer "can AI replace this role?" It is: "for each mandate in this role, who or what is best positioned to hold it, given what we know today?"</p>
+
+  <p>That is a question with answers. And the answers change as the capability changes.</p>
+
+  <h2>Closing</h2>
+
+  <p>You do not buy an AI tool. You transfer a mandate.</p>
+
+  <p>And before you transfer a mandate, you have to know what it is.</p>
+
+  <p>The work of opening the bundle — naming the mandates that compose a role, sorting them into who-holds-them buckets, auditing the list, retiring what shouldn't exist — is unglamorous. It is also the place where AI rollouts actually live.</p>
+
+  <p><span class="refrain">The jobs question goes nowhere. The mandate question has answers — and the answers move as the capability does.</span></p>
+
+</article>
+
+<div class="next-article-block">
+  <div class="next-article">
+      <span class="label">Next field note</span>
+      <a href="./a-content-agent-doesnt-need-a-better-prompt.html">A Content Agent Doesn't Need a Better Prompt. It Needs a Canon.</a>
+    </div>
+</div>
+
+<footer class="article-footer">
+
+  <section class="article-cta reveal">
+    <div class="article-cta-content">
+      <div>
+        <div class="eyebrow"><span class="rule"></span><span>The next step</span></div>
+        <h3>The Compression Audit <em>opens the bundle.</em></h3>
+        <p>Two weeks. We open one role you've been arguing about, sort its mandates into delegate / assist / human / retire, and ship the redesign that lets you move work — between people, between people and agents — without re-writing a job description.</p>
+      </div>
+      <div class="ctas">
+        <a href="../audit.html" class="cta-amber-on-dark">
+          See the audit
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-row">
+      <a href="/" class="brand">
+        <span class="brand-logo" style="width:26px;height:26px;">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65"
+                  stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M32 28 V72 L68 28 V72"
+                  stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="brand-wordmark">
+          <svg width="132" height="33" viewBox="0 0 132 33" aria-label="CMPRSSN" role="img">
+            <text x="0" y="24" font-family="'Decima Mono Pro',ui-monospace,monospace"
+                  font-size="22" font-weight="400" letter-spacing="7.04"
+                  fill="currentColor">CMPRSSN</text>
+          </svg>
+        </span>
+      </a>
+      <div>
+        <a href="mailto:growth@cmprssn.xyz" class="footer-mail">growth@cmprssn.xyz</a>
+      </div>
+    </div>
+    <p class="footer-line">
+      CMPRSSN · Closing the coupling gap, one workflow at a time.<br>
+      © <span data-current-year>2026</span> Compression · Architecting organizations for the agentic era.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Keep the © year fresh without pulling in a build step.
+  document.querySelectorAll('[data-current-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
+</script>
+<script src="/cmprssn.js?v=3" defer></script>
+</body>
+</html>

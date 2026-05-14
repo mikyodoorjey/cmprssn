@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A Content Agent Doesn't Need a Better Prompt. It Needs a Canon. — CMPRSSN Field Notes</title>
+<meta name="description" content="A knowledge base stores information. A canon establishes authority. Most companies have the first and assume it does the work of the second.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Cpath d='M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65' stroke='%23191918' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 28 V72 L68 28 V72' stroke='%23191918' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://framerusercontent.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://framerusercontent.com/assets/0y4e2dnjbvXv2rIsO8uj8iBVs.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://framerusercontent.com/assets/dQxMUUKNHsT2SlXtsq1ClLU9uiA.woff2" crossorigin>
+<link rel="stylesheet" href="../cmprssn-tokens.css">
+<link rel="stylesheet" href="field-notes.css">
+<style>
+/* Footer (shared across subpages) */
+.site-footer{padding-left:var(--pad-x);padding-right:var(--pad-x);padding-bottom:32px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding-top:32px;border-top:1px solid var(--line);}
+.footer-row{display:flex;flex-direction:column;gap:24px;justify-content:space-between;align-items:flex-start;}
+@media (min-width:760px){.footer-row{flex-direction:row;align-items:center;}}
+.footer-mail{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-muted);}
+.footer-line{font-family:var(--font-mono);margin-top:64px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-subtle);max-width:60ch;}
+@media (min-width:760px){.footer-line{display:none;}}
+/* Nav layout for subpages */
+.nav-shell{position:fixed;top:0;left:0;right:0;z-index:50;}
+.nav-row{display:flex;align-items:center;justify-content:space-between;padding-top:18px;padding-bottom:18px;gap:16px;}
+.brand{display:flex;align-items:center;gap:14px;color:var(--ink);min-width:0;}
+.brand-logo{width:24px;height:24px;display:inline-block;transform-origin:center;transition:transform 200ms cubic-bezier(0.2,0.8,0.2,1);}
+.brand-logo svg{width:100%;height:100%;overflow:visible;}
+.brand-wordmark{display:inline-flex;align-items:center;flex:0 0 auto;}
+.brand-wordmark svg{display:block;overflow:visible;}
+.desktop-nav{display:flex;align-items:center;gap:36px;}
+</style>
+</head>
+<body>
+
+<header class="nav-shell">
+  <div class="wrap nav-row">
+    <a href="/" class="brand" aria-label="CMPRSSN home">
+      <span class="brand-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path data-logo="c"
+                d="M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65"
+                stroke="currentColor" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" />
+          <path data-logo="n"
+                d="M32 28 V72 L68 28 V72"
+                stroke="currentColor" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <span class="brand-wordmark">
+        <svg width="120" height="30" viewBox="0 0 120 30" aria-label="CMPRSSN" role="img">
+          <text x="0" y="22"
+                font-family="'Decima Mono Pro',ui-monospace,monospace"
+                font-size="20" font-weight="400"
+                letter-spacing="6.4"
+                fill="currentColor" stroke="currentColor" stroke-width="1"
+                paint-order="stroke fill" stroke-linejoin="round">CMPRSSN</text>
+        </svg>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary">
+      <a href="/methodology.html" class="nav-link">Methodology</a>
+      <a href="/audit.html" class="nav-link">Audit</a>
+      <a href="/field-notes/" class="nav-link is-active">Field Notes</a>
+      <a href="/about.html" class="nav-link">About</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-sheet">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-sheet" id="mobile-sheet" aria-hidden="true">
+  <a href="/methodology.html" class="sheet-link"><span>Methodology</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/audit.html" class="sheet-link"><span>Audit</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/field-notes/" class="sheet-link"><span>Field Notes</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/about.html" class="sheet-link"><span>About</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <div class="sheet-cta">
+    <a href="mailto:growth@cmprssn.xyz" class="cta-amber" style="font-size:16px;padding:16px 24px;">
+      Book a conversation
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- Hero — vintage manuscript pages / open book (suggests "settled truth, authoritative source")
+     IMAGE PROMPT: aged paper, hand-written or printed text, ink. Avoid generic "library" stock. -->
+<figure class="article-hero" aria-hidden="true">
+  <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=2400&auto=format&fit=crop" alt="" />
+  <figcaption class="article-hero-caption"><span class="rule"></span><span>Fig 005 · What the company is willing to defend</span></figcaption>
+</figure>
+
+<header class="article-header reveal">
+  <div class="article-eyebrow"><span class="rule"></span><span>Field Note · 05</span></div>
+  <h1 class="article-h1">A Content Agent Doesn't Need a Better Prompt. <em>It Needs a Canon.</em></h1>
+  <p class="article-dek">A knowledge base stores information. A canon establishes authority. Most companies have the first and assume it does the work of the second. It doesn't — and the gap is why agents produce plausible content nobody can ship.</p>
+  <div class="byline" style="--avatar-url: url('../assets/img/ryan-headshot.png');">
+    <div class="byline-avatar" aria-hidden="true">RVS</div>
+    <div class="byline-meta">
+      <div class="byline-name">Ryan Van Sickle</div>
+      <div class="byline-role">Co-Founder, CMPRSSN</div>
+    </div>
+    <div class="byline-date">
+      <span>Mar 16 · 2026</span>
+      <span class="read">10 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p class="lede">The most common AI failure I see is not a model failure. It is a canon failure.</p>
+
+  <p>A company decides to use an agent to draft customer-facing content. The brief is reasonable. The model is competent. The first drafts come back fluent, on-topic, structurally sound. They sound like content. They just don't sound like <em>this company's</em> content. And by the time a human edits them into shape, the agent has saved maybe twenty minutes.</p>
+
+  <p>Then someone says agents aren't ready. Or someone says we need a better prompt.</p>
+
+  <p>It is neither. The agent is being asked to write for a company that has not written itself down.</p>
+
+  <h2>A knowledge base is not a canon</h2>
+
+  <p>Every company I've seen up close has a knowledge base of some kind. A Notion. A Confluence. A Google Drive with folders called "brand" and "messaging" and "v3-final-FINAL." There is stuff in it. There is a lot of stuff in it. Most of it is out of date.</p>
+
+  <p>The knowledge base stores information. It does not, in any practical sense, <em>establish</em> anything.</p>
+
+  <p>That is what a <em class="term">canon</em> does. A canon is the durable layer of things the company has decided are true and is not going to re-decide on a whim. The voice. The approved claims. The forbidden ones. The pricing posture. The product names. The lines legal will not let you cross. The taste that someone in the founder's office has been quietly defending for years.</p>
+
+  <p>Canon is not documentation. Canon is what the documentation should be sitting on top of.</p>
+
+  <blockquote class="pullquote">A knowledge base stores information. A canon establishes authority. They are not the same thing.</blockquote>
+
+  <p>When humans write content for a company, they patch the missing canon constantly. The good content lead knows the founder would hate that adjective. The good account rep knows the pricing discount the company is "not officially offering" but offered three times last quarter. The good support manager knows that the refund policy has a carve-out for December, even though it isn't written down anywhere. They are running on tacit canon.</p>
+
+  <p>Agents don't have tacit anything. Tacit is the part of canon that lives in human heads.</p>
+
+  <h2>What lives inside a canon</h2>
+
+  <p>It is worth getting concrete about what a canon actually contains. The list is longer than people expect, and most of it is unwritten in most companies.</p>
+
+  <p><em>Voice.</em> Not "professional" or "approachable." Specific. Long sentences or short? First person or third? Where does the company allow humor and where does it never? When the company writes about its own product, does it sound technical or warm? Voice is more constraint than expression.</p>
+
+  <p><em>Customer.</em> Who you write to. The unhelpful version is a deck-slide ICP with bullet points. The useful version is two paragraphs that name the customer's actual context — what they are trying to do today, what they have already tried, what kind of language they roll their eyes at.</p>
+
+  <p><em>Approved claims and forbidden ones.</em> What the company is willing to say about itself. What it is not. Claims are usually approved one at a time by whoever wrote the press release, and then the company spends years either re-defending them or quietly contradicting them.</p>
+
+  <p><em>Pricing posture.</em> Whether the company publishes price. How discounts get talked about. Whether enterprise tiers are named or "let's talk." Every customer-facing conversation sits on top of this, whether sales realizes it or not.</p>
+
+  <p><em>Competitive map.</em> Who the company positions against, and who it deliberately ignores. The companies the agent is allowed to name and the companies it is not.</p>
+
+  <p><em>Product canon.</em> The names. The versions. What changed last quarter. What is in beta and what is generally available. What is on the website and what is not. The agent that pitches a feature you killed six months ago is operating on broken product canon.</p>
+
+  <p><em>Policies and their carve-outs.</em> The standing rules, and the exceptions that live in someone's head. Most companies have written the rules. Most have not written the carve-outs.</p>
+
+  <p><em>Refusals.</em> The things the company will not do, will not say, will not respond to. Refusals are usually defined in retrospect, after someone shipped the wrong thing.</p>
+
+  <p>That's seven categories. There are probably ten more in any specific company. The point is not to be exhaustive. The point is that canon is the operational substrate of <em>every output the company produces</em> — and most of it is currently being held in two or three people's memory.</p>
+
+  <h2>How canon goes wrong</h2>
+
+  <p>Even in companies that try to maintain canon explicitly, four failure modes show up over and over.</p>
+
+  <p><em>Drift.</em> The founder said something in 2022. The company has quietly been saying the opposite for a year. Nobody has gone back to update the source. The wiki page still says the 2022 thing. New hires read it and propagate it. The two-track canon — old written, new spoken — accumulates contradictions that nobody resolves because nobody owns the resolution.</p>
+
+  <p><em>Fork.</em> Marketing has one version of the canon. Sales has another. Support has a third. The differences are small at first and then compound. Two years in, every department has a slightly different copy of the company, and the gap between them is the gap between what each department is willing to claim publicly.</p>
+
+  <p><em>Founder-osmosis.</em> The canon lives entirely in the founders' heads. It transmits to the first ten employees by sitting near them. It transmits to the next forty by being repeated in all-hands. By employee two hundred, half the company is operating on a canon they have never encountered firsthand, mediated through a manager who learned it from a manager who learned it from someone who used to sit near the founder.</p>
+
+  <p><em>"We just know."</em> The most pervasive failure mode. The canon is real, but it is unwritten, and every member of the team has a slightly different copy in their head. Disagreements about content — should we use this word, can we make this claim, do we sound like this — turn into status games rather than canon lookups, because there is no canon to look up.</p>
+
+  <p>All four of these failure modes were always expensive. AI just changes the velocity at which the cost shows up.</p>
+
+  <h2>Canon as infrastructure</h2>
+
+  <p>The shift, if you want agents to write for you, is to treat canon as infrastructure.</p>
+
+  <p>Not as a brand guideline. Not as a knowledge base entry. As a durable, versioned, owned, queryable layer that the company is willing to defend.</p>
+
+  <p>The treatment that works looks more like a codebase than a wiki. Each canon artifact has an owner — not "the marketing team," a person whose name is on the file. It has a state — draft, approved, deprecated. It has a change log. When it gets updated, there is a record of who updated it, why, and what the previous version said. It can be referenced from other artifacts, so a claim in a sales deck can point back to the canonical claim it descends from.</p>
+
+  <p>That sounds heavy. In practice, it is not. The first canon a company actually treats this way is usually three to five artifacts: a real voice guide with examples, a written ICP that reads like a paragraph, a list of approved and forbidden claims, the product canon, the refusal list. Five files, maintained, with owners. Most companies cannot say they have even that.</p>
+
+  <blockquote class="pullquote">The company canon is becoming as important as the company codebase. Most companies have not noticed.</blockquote>
+
+  <p>Once canon is infrastructure, two things become possible that were not possible before.</p>
+
+  <p>The first: a new hire on day three can write something customer-facing that is recognizable as the company's. The canon is the substitute for the year of sitting near the founder.</p>
+
+  <p>The second: the agent has somewhere to read from. Not a Slack channel. Not a hundred-page brand guideline written for a designer. A small, sharp, machine-readable set of artifacts that establish what the company is willing to say.</p>
+
+  <h2>The role that owns this</h2>
+
+  <p>The awkward part: this role doesn't have a clean home in most org charts.</p>
+
+  <p>At small companies, the founder holds it without naming it. At mid-stage, marketing or brand absorbs it without the authority to defend it. At larger companies, it splits — voice to brand, claims to comms, product canon to PMM, policies to legal — and the splits guarantee that no one holds the full picture.</p>
+
+  <p>The role that owns canon is closer to a librarian than a brand manager: curates, watches for drift, has the authority to push back when departments contradict each other, treats the canon as a defensible artifact rather than a stylistic preference.</p>
+
+  <p>The companies that name and staff this early get a five-year lead on canon quality at scale.</p>
+
+  <h2>Why agents make this acute</h2>
+
+  <p>The thing about canon is that the cost of <em>not</em> having it was always real. The cost was paid in hours-per-piece-of-content, in re-litigated decisions about voice, in the bottleneck of "everything customer-facing has to go through these two people, forever."</p>
+
+  <p>Agents change the velocity. The same canon failure that used to produce a slightly off-brand blog post once a week now produces ten of them by lunch, all subtly off in slightly different ways, all of them confident.</p>
+
+  <p>The volume amplifies the drift. The drift amplifies the volume. The canon failure that was a slow leak becomes a fast one.</p>
+
+  <p>And the human content lead — the person who used to patch the canon with judgment and memory — is now editing the agent's output. They can do this for a while. They cannot do it forever, because the volume scales and their judgment does not. The point of bringing in an agent was not to give them a second job.</p>
+
+  <p><em>Your agent cannot know what the company believes if the company cannot say what the company believes.</em> The fix is not at the prompt layer. It is at the canon layer.</p>
+
+  <h2>Closing</h2>
+
+  <p>The content-agent problem looks like a model problem. Get a better model. Engineer the prompt. Add few-shot examples.</p>
+
+  <p>It is not a model problem. It is an authority problem.</p>
+
+  <p>The agent has no way to know what the company has decided is true — what voice means, what claims are approved, what carve-outs apply, what refusals stand. Most companies cannot give it those answers, because most companies have never written them down.</p>
+
+  <p>The fix is not glamorous. It is treating canon as infrastructure. Naming an owner. Versioning the artifacts. Writing down what the founder has been holding in their head for ten years. Five small files, maintained, defended.</p>
+
+  <p>Then the agent has a place to read from. And the human content lead stops editing fluent slop into shippable copy ten times a day.</p>
+
+  <p><span class="refrain">A knowledge base stores information. A canon establishes authority. Build the second.</span></p>
+
+</article>
+
+<div class="next-article-block">
+  <div class="next-article">
+      <span class="label">Next field note</span>
+      <a href="./ai-native-people.html">AI-Native People Aren't Power Users. They're Different Thinkers.</a>
+    </div>
+</div>
+
+<footer class="article-footer">
+
+  <section class="article-cta reveal">
+    <div class="article-cta-content">
+      <div>
+        <div class="eyebrow"><span class="rule"></span><span>The next step</span></div>
+        <h3>The Compression Audit names <em>what your canon should defend.</em></h3>
+        <p>Two weeks. We pull the voice, the approved claims, the refusals, the product canon, and the legal carve-outs out of two people's heads — and ship them as five small files your content agent can read on day one.</p>
+      </div>
+      <div class="ctas">
+        <a href="../audit.html" class="cta-amber-on-dark">
+          See the audit
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-row">
+      <a href="/" class="brand">
+        <span class="brand-logo" style="width:26px;height:26px;">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65"
+                  stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M32 28 V72 L68 28 V72"
+                  stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="brand-wordmark">
+          <svg width="132" height="33" viewBox="0 0 132 33" aria-label="CMPRSSN" role="img">
+            <text x="0" y="24" font-family="'Decima Mono Pro',ui-monospace,monospace"
+                  font-size="22" font-weight="400" letter-spacing="7.04"
+                  fill="currentColor">CMPRSSN</text>
+          </svg>
+        </span>
+      </a>
+      <div>
+        <a href="mailto:growth@cmprssn.xyz" class="footer-mail">growth@cmprssn.xyz</a>
+      </div>
+    </div>
+    <p class="footer-line">
+      CMPRSSN · Closing the coupling gap, one workflow at a time.<br>
+      © <span data-current-year>2026</span> Compression · Architecting organizations for the agentic era.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Keep the © year fresh without pulling in a build step.
+  document.querySelectorAll('[data-current-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
+</script>
+<script src="/cmprssn.js?v=3" defer></script>
+</body>
+</html>

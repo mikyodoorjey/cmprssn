@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Your Company Has Four Different Things and Calls Them All "Goals" — CMPRSSN Field Notes</title>
+<meta name="description" content="KPIs, Objectives, OKRs, Milestones — four structurally different commitments collapsed into one word. The collapse is why goal-setting feels like theater while progress feels untracked.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Cpath d='M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65' stroke='%23191918' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 28 V72 L68 28 V72' stroke='%23191918' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://framerusercontent.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://framerusercontent.com/assets/0y4e2dnjbvXv2rIsO8uj8iBVs.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://framerusercontent.com/assets/dQxMUUKNHsT2SlXtsq1ClLU9uiA.woff2" crossorigin>
+<link rel="stylesheet" href="../cmprssn-tokens.css">
+<link rel="stylesheet" href="field-notes.css">
+<style>
+  /* Article-specific override for the four-shape comparison table */
+  .shape-table {
+    margin: 40px 0;
+    border-top: 1px solid var(--ink);
+  }
+  .shape-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (min-width: 720px) {
+    .shape-row {
+      grid-template-columns: 130px 1.4fr 1fr 1fr;
+      gap: 20px;
+      align-items: baseline;
+    }
+  }
+  .shape-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  .shape-def {
+    font-family: var(--font-text);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+  }
+  .shape-time, .shape-eg {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    line-height: 1.5;
+  }
+  .shape-eg em { color: var(--ink); font-style: italic; text-transform: none; letter-spacing: 0.02em; font-family: var(--font-display); font-size: 13.5px; }
+  .shape-header { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--fg-subtle); padding-bottom: 8px; border-bottom: 0; }
+</style>
+<style>
+/* Footer (shared across subpages) */
+.site-footer{padding-left:var(--pad-x);padding-right:var(--pad-x);padding-bottom:32px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding-top:32px;border-top:1px solid var(--line);}
+.footer-row{display:flex;flex-direction:column;gap:24px;justify-content:space-between;align-items:flex-start;}
+@media (min-width:760px){.footer-row{flex-direction:row;align-items:center;}}
+.footer-mail{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-muted);}
+.footer-line{font-family:var(--font-mono);margin-top:64px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-subtle);max-width:60ch;}
+@media (min-width:760px){.footer-line{display:none;}}
+/* Nav layout for subpages */
+.nav-shell{position:fixed;top:0;left:0;right:0;z-index:50;}
+.nav-row{display:flex;align-items:center;justify-content:space-between;padding-top:18px;padding-bottom:18px;gap:16px;}
+.brand{display:flex;align-items:center;gap:14px;color:var(--ink);min-width:0;}
+.brand-logo{width:24px;height:24px;display:inline-block;transform-origin:center;transition:transform 200ms cubic-bezier(0.2,0.8,0.2,1);}
+.brand-logo svg{width:100%;height:100%;overflow:visible;}
+.brand-wordmark{display:inline-flex;align-items:center;flex:0 0 auto;}
+.brand-wordmark svg{display:block;overflow:visible;}
+.desktop-nav{display:flex;align-items:center;gap:36px;}
+</style>
+</head>
+<body>
+
+<header class="nav-shell">
+  <div class="wrap nav-row">
+    <a href="/" class="brand" aria-label="CMPRSSN home">
+      <span class="brand-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path data-logo="c"
+                d="M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65"
+                stroke="currentColor" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" />
+          <path data-logo="n"
+                d="M32 28 V72 L68 28 V72"
+                stroke="currentColor" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <span class="brand-wordmark">
+        <svg width="120" height="30" viewBox="0 0 120 30" aria-label="CMPRSSN" role="img">
+          <text x="0" y="22"
+                font-family="'Decima Mono Pro',ui-monospace,monospace"
+                font-size="20" font-weight="400"
+                letter-spacing="6.4"
+                fill="currentColor" stroke="currentColor" stroke-width="1"
+                paint-order="stroke fill" stroke-linejoin="round">CMPRSSN</text>
+        </svg>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary">
+      <a href="/methodology.html" class="nav-link">Methodology</a>
+      <a href="/audit.html" class="nav-link">Audit</a>
+      <a href="/field-notes/" class="nav-link is-active">Field Notes</a>
+      <a href="/about.html" class="nav-link">About</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-sheet">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-sheet" id="mobile-sheet" aria-hidden="true">
+  <a href="/methodology.html" class="sheet-link"><span>Methodology</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/audit.html" class="sheet-link"><span>Audit</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/field-notes/" class="sheet-link"><span>Field Notes</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <a href="/about.html" class="sheet-link"><span>About</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  </a>
+  <div class="sheet-cta">
+    <a href="mailto:growth@cmprssn.xyz" class="cta-amber" style="font-size:16px;padding:16px 24px;">
+      Book a conversation
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- Hero — vintage compass / navigation instrument / map dividers
+     IMAGE PROMPT: brass compass, hand-drawn map, navigational instrument.
+     Avoid: target/dart cliché, "growth chart" stock imagery. -->
+<figure class="article-hero" aria-hidden="true">
+  <img src="https://images.unsplash.com/photo-1551295022-de5522c94e08?q=80&w=2400&auto=format&fit=crop" alt="" />
+  <figcaption class="article-hero-caption"><span class="rule"></span><span>Fig 009 · Four instruments, not one</span></figcaption>
+</figure>
+
+<header class="article-header reveal">
+  <div class="article-eyebrow"><span class="rule"></span><span>Field Note · 09</span></div>
+  <h1 class="article-h1">Your Company Has Four Different Things <em>and Calls Them All "Goals."</em></h1>
+  <p class="article-dek">KPIs, Objectives, OKRs, and Milestones are not the same shape. Most companies collapse all four into one word — and the collapse is why goal-setting feels like theater while actual progress feels untracked.</p>
+  <div class="byline" style="--avatar-url: url('../assets/img/ryan-headshot.png');">
+    <div class="byline-avatar" aria-hidden="true">RVS</div>
+    <div class="byline-meta">
+      <div class="byline-name">Ryan Van Sickle</div>
+      <div class="byline-role">Co-Founder, CMPRSSN</div>
+    </div>
+    <div class="byline-date">
+      <span>Jan 26 · 2026</span>
+      <span class="read">10 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p class="lede">"What's our goal for the launch?"</p>
+
+  <p>The question gets asked in a planning meeting. Three people answer in three structurally different shapes — a number, a sustained commitment, a dated event — and the meeting moves on as if it has been answered. It has not been answered. It has been answered <em>three different ways</em>, and the room will spend the next quarter discovering that the three answers don't line up.</p>
+
+  <p>This is the most common planning pathology I see, and it is almost never named. <em>Most companies use one word — "goals" — for four structurally different commitments, and the collision of the four is why goal-setting feels like theater while actual progress feels untracked.</em></p>
+
+  <p>The fix is not a better framework. The fix is a better vocabulary.</p>
+
+  <h2>Four shapes, defined precisely</h2>
+
+  <p>Here are the four. They are not competitors. They are different tools for different jobs. A serious operating company uses all four, and uses them for distinct things.</p>
+
+  <div class="shape-table">
+    <div class="shape-row">
+      <div class="shape-header">Shape</div>
+      <div class="shape-header">What it is</div>
+      <div class="shape-header">Time axis</div>
+      <div class="shape-header">Example</div>
+    </div>
+    <div class="shape-row">
+      <div class="shape-name">KPI</div>
+      <p class="shape-def">A single measurable metric — current, previous, target.</p>
+      <div class="shape-time">Rolling · always live</div>
+      <div class="shape-eg"><em>Monthly active users</em></div>
+    </div>
+    <div class="shape-row">
+      <div class="shape-name">Objective</div>
+      <p class="shape-def">A sustained qualitative commitment, with KPIs and milestones nested underneath.</p>
+      <div class="shape-time">Standing · until superseded</div>
+      <div class="shape-eg"><em>Become the default platform for mid-market</em></div>
+    </div>
+    <div class="shape-row">
+      <div class="shape-name">OKR</div>
+      <p class="shape-def">An Objective with quarterly KPI scoring, graded 0.0–1.0 at close.</p>
+      <div class="shape-time">Quarterly · timeboxed</div>
+      <div class="shape-eg"><em>Q2: grow mid-market ARR by 30%</em></div>
+    </div>
+    <div class="shape-row">
+      <div class="shape-name">Milestone</div>
+      <p class="shape-def">A dated, named, binary done/not-done event.</p>
+      <div class="shape-time">Date-fixed · one-shot</div>
+      <div class="shape-eg"><em>v2 launches July 15</em></div>
+    </div>
+  </div>
+
+  <p>Four shapes. Four time-axes. Four success criteria. One word.</p>
+
+  <blockquote class="pullquote">A KPI is a number. An Objective is the commitment that hopes the number moves. They are not the same shape.</blockquote>
+
+  <h2>Why the collapse is expensive</h2>
+
+  <p>Each shape implies a different kind of work. When you collapse all four into "goals," the work gets misallocated.</p>
+
+  <p><em>A KPI implies measurement work.</em> Building the dashboard. Defining the metric precisely. Making sure the number is trustworthy. Investigating when it moves unexpectedly. The work is ongoing and tactical. If you ask a KPI to carry narrative, it cannot — it is a number, not a story.</p>
+
+  <p><em>An Objective implies sustaining work.</em> It is a standing posture the company has decided to hold. It requires coordination across departments, ongoing prioritization, and a willingness to keep funding the same direction for years. The work is strategic and slow. If you ask an Objective to be scored quarterly, you are asking it to do something its shape doesn't support.</p>
+
+  <p><em>An OKR implies cadence work.</em> Setting it at the start of the quarter, scoring it at the end, conducting the post-mortem on what the score means. The work is rhythmic and bounded. The OKR is a quarterly scoring instrument; it lives and dies inside the quarter.</p>
+
+  <p><em>A Milestone implies sequencing work.</em> Hitting a date. Coordinating the cross-functional preparation that gets to the date. Treating the date as a real commitment rather than a hope. The work is project-shaped. If you ask a Milestone to track an ongoing metric, you have a workflow, not a milestone.</p>
+
+  <p>Asking the wrong shape to do the wrong work is the single most common planning failure I see. <em>An Objective wearing OKR clothes does not get scored, because there's nothing to score. A Milestone with an ongoing-metric component does not get shipped, because the date never feels final. A KPI with no Objective behind it floats in a dashboard, slowly drifting, with no one accountable for what it should mean.</em></p>
+
+  <h2>The most common misuse: OKRs swallowing everything</h2>
+
+  <p>Of the four shapes, OKR is the one that gets abused most.</p>
+
+  <p>Walk through the OKR list of any company that has had OKRs for more than a year. Most of what is on the list is not an OKR. Most of what is on the list is a sustained Objective that the company decided to call an OKR because OKRs are the format in fashion.</p>
+
+  <p>The tell: the supposed OKR has no quarterly scoring. There is no 0.0-to-1.0 grade at the end of the quarter. There is no commitment to revisit the goal at quarter-close. There is no scoring meeting. The "OKR" just exists, indefinitely, getting referenced in planning meetings and rolled over from quarter to quarter without anyone explicitly saying "this is still the goal."</p>
+
+  <p>That is an Objective. It is a perfectly good Objective. It is doing the work an Objective should do. <em>It is just not an OKR.</em></p>
+
+  <p>The cost of mis-labeling it is that the company's actual quarterly scoring instrument never gets used. The OKR cadence — the quarter clock, the score, the close-out review — is a real planning rhythm. When everything in the company gets labeled OKR, the cadence loses its bite. Nothing actually has to close, because nothing actually got scored.</p>
+
+  <blockquote class="pullquote">If your "OKR" has no quarterly scoring, it is an Objective wearing borrowed clothes.</blockquote>
+
+  <h2>How they relate</h2>
+
+  <p>The four shapes are not competing systems. They nest.</p>
+
+  <p>An Objective is the largest container. It is the standing commitment.</p>
+
+  <p>KPIs nest under Objectives. They are the metrics the Objective is trying to move. An Objective without KPIs is a vibe. A KPI without an Objective is a number floating in a dashboard.</p>
+
+  <p>Milestones live inside Objectives. They are the dated events on the path. They sequence the work. An Objective with no Milestones is a slogan; a Milestone with no Objective behind it is a project that doesn't know why it shipped.</p>
+
+  <p>OKRs are a thin scoring layer that sits on top of Objectives, for the quarter, when you want to commit to a specific scoreable subset of the Objective's progress. <em>Some quarters an Objective gets an OKR attached. Some quarters it doesn't. The Objective continues regardless.</em></p>
+
+  <p>The four shapes, used correctly, form a stack: standing Objectives at the top, KPIs and Milestones underneath measuring and sequencing the work, OKRs as the optional quarterly scoring overlay.</p>
+
+  <p>When this stack is named, the company stops arguing about which framework to use. The argument is misplaced. The shapes are tools, not frameworks. You use all four.</p>
+
+  <h2>The mandate connection</h2>
+
+  <p><a href="./you-do-not-automate-roles-you-transfer-mandates.html" class="xlink">Mandates attach to goal shapes</a>, and the shape determines the work the mandate implies.</p>
+
+  <p>A mandate to "move the customer-NPS number" attaches to a KPI. The work is measurement, hypothesis, intervention, re-measurement.</p>
+
+  <p>A mandate to "make sales meet quota" attaches to an Objective. The work is sustained coordination — sales enablement, pipeline health, comp design — none of which is bounded by a quarter.</p>
+
+  <p>A mandate to "ship the migration by July 15" attaches to a Milestone. The work is sequencing — scope, dependencies, the demo at the end, the rollback plan.</p>
+
+  <p>A mandate to "hit Q2 targets" attaches to an OKR. The work is cadence — the score, the close-out, the carry-forward.</p>
+
+  <p>When the mandate doesn't know what shape it is attached to, the person holding the mandate does not know what kind of work they are doing. They guess. The guess is often wrong, and the cost of being wrong shows up as effort spent in the wrong place — a Milestone team trying to manage an ongoing KPI, a KPI owner being asked to ship something on a date.</p>
+
+  <h2>The agent angle</h2>
+
+  <p>If you are going to put agents inside your operating system, the goal stack has to be typed. Agents don't take action against vibes. They take action against shapes.</p>
+
+  <p>An agent that holds a slice of a KPI knows what success looks like — the number moves, in the right direction, by a defined margin. An agent that holds a slice of a Milestone knows what success looks like — the dated event fires, the criteria are met, the demo happens. An agent assigned to an "OKR" that is actually an Objective has no idea what to do at the end of the quarter, because no one bothered to give it a quarterly scoring criterion.</p>
+
+  <p>The moment agents enter your operating model, the shape problem stops being a planning hygiene issue and becomes a system one. The vibes that worked between humans don't survive translation to machines.</p>
+
+  <p>You can read this as bad news — one more reason agents are hard to deploy. I read it the other way. The shape collapse was always costing the human team; the agents just refuse to absorb the cost the way a senior PM does, which is what makes them useful diagnostic instruments.</p>
+
+  <blockquote class="pullquote">Most companies have four kinds of goals and one word for all of them. The agents notice first.</blockquote>
+
+  <h2>Closing</h2>
+
+  <p>Stop calling all four "goals."</p>
+
+  <p>Use the right name. KPI for a number. Objective for a standing commitment. OKR for a quarterly scoring instrument. Milestone for a dated event. The vocabulary is not pedantry. It is the difference between a planning system that can be acted on and a planning ritual that produces decks.</p>
+
+  <p>One test. If your goal can't be sorted into KPI, Objective, OKR, or Milestone, it's not a goal — it's an aspiration. Aspirations are fine. They just don't belong in the row of the planning system that has owners and scores.</p>
+
+  <p>The work becomes legible the moment the vocabulary does.</p>
+
+  <p><span class="refrain">Four shapes. Four kinds of work. One word stops being enough.</span></p>
+
+</article>
+
+<div class="next-article-block">
+  <div class="next-article">
+      <span class="label">Browse all</span>
+      <a href="./">Field Notes index</a>
+    </div>
+</div>
+
+<footer class="article-footer">
+
+  <section class="article-cta reveal">
+    <div class="article-cta-content">
+      <div>
+        <div class="eyebrow"><span class="rule"></span><span>The next step</span></div>
+        <h3>The Compression Audit names <em>the shape of every goal in your stack.</em></h3>
+        <p>Two weeks. We sort every "goal" on your books into KPI, Objective, OKR, or Milestone — and ship the planning stack your mandates can attach to and your agents can act against. The collapse stops being free.</p>
+      </div>
+      <div class="ctas">
+        <a href="../audit.html" class="cta-amber-on-dark">
+          See the audit
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-row">
+      <a href="/" class="brand">
+        <span class="brand-logo" style="width:26px;height:26px;">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M95 35 L95 20 A15 15 0 0 0 80 5 L20 5 A15 15 0 0 0 5 20 L5 80 A15 15 0 0 0 20 95 L80 95 A15 15 0 0 0 95 80 L95 65"
+                  stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M32 28 V72 L68 28 V72"
+                  stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="brand-wordmark">
+          <svg width="132" height="33" viewBox="0 0 132 33" aria-label="CMPRSSN" role="img">
+            <text x="0" y="24" font-family="'Decima Mono Pro',ui-monospace,monospace"
+                  font-size="22" font-weight="400" letter-spacing="7.04"
+                  fill="currentColor">CMPRSSN</text>
+          </svg>
+        </span>
+      </a>
+      <div>
+        <a href="mailto:growth@cmprssn.xyz" class="footer-mail">growth@cmprssn.xyz</a>
+      </div>
+    </div>
+    <p class="footer-line">
+      CMPRSSN · Closing the coupling gap, one workflow at a time.<br>
+      © <span data-current-year>2026</span> Compression · Architecting organizations for the agentic era.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Keep the © year fresh without pulling in a build step.
+  document.querySelectorAll('[data-current-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
+</script>
+<script src="/cmprssn.js?v=3" defer></script>
+</body>
+</html>

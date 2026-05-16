@@ -1,0 +1,54 @@
+# CMPRSSN
+
+> CMPRSSN closes the coupling gap between organizational readiness and agentic AI capability. The technology is ready; most organizations are not. We diagnose where companies are structurally coupled to legacy patterns that block agents, then redesign workflows, roles, and data structures so people and intelligence can do what they each do best.
+
+We work through a three-step method:
+1. **Diagnose** — the Compression Audit, a two-week engagement that produces a stage + vector readout against the Compression Scale.
+2. **Redesign** — a Recompression Roadmap that reshapes operating model, mandates, and data architecture.
+3. **Deploy** — agentic systems built with partners LLABS (agents) and Inversed (governance).
+
+## Methodology
+
+- [The Compression Scale](https://www.cmprssn.xyz/methodology.html): 12 stages organized into 4 tiers (Foundation, Legibility, Intelligence, Emergence), scored across 6 vectors (Process Legibility, Data Architecture, AI Adoption, Org Design, Cultural Readiness, Governance). Stage 6 — the **World Model** — is the hinge: the layer at which an organization becomes legible enough for intelligence to act inside it.
+
+## Services
+
+- [The Compression Audit](https://www.cmprssn.xyz/audit.html): two-week diagnostic engagement, twelve-stage scoring, six-vector readout. Output is a board-ready readout of where the organization sits on the Compression Scale, which vectors are critical-path, and the first three workflows worth recompressing.
+
+## About
+
+- [Team and thesis](https://www.cmprssn.xyz/about.html): founders Mikyo Clark and Ryan Van Sickle, with delivery team Kyle Weiss, Yalor Mewn, and Jeremias Pedreira. External partners: LLABS (agent engineering) and Inversed (governance).
+
+## Field Notes
+
+A working journal from Ryan Van Sickle. Each post is a primary-source argument about how organizations have to change to become AI-native.
+
+- [The Legible Organization](https://www.cmprssn.xyz/field-notes/the-legible-organization.html) — 2026-05-04. Documentation describes the company you meant to build; legibility describes the one you actually run.
+- [Why AI Transformation Is Mostly Not About AI](https://www.cmprssn.xyz/field-notes/why-ai-transformation-is-mostly-not-about-ai.html) — 2026-05-03. Before a company can become AI-native, it has to become legible.
+- [Your Company Needs a World Model, Not Another App](https://www.cmprssn.xyz/field-notes/your-company-needs-a-world-model.html) — 2026-04-27. The missing layer in most AI rollouts isn't a workflow tool; it's a representation of what the organization is, knows, owns, permits, and intends.
+- [The AI-Native Company Will Not Look Like a SaaS Company with Copilots](https://www.cmprssn.xyz/field-notes/the-ai-native-company.html) — 2026-04-06. Most "AI-native" claims are SaaS companies with an LLM bolted on; the actual AI-native company is structurally different.
+- [A Content Agent Doesn't Need a Better Prompt. It Needs a Canon.](https://www.cmprssn.xyz/field-notes/a-content-agent-doesnt-need-a-better-prompt.html) — 2026-03-16. A knowledge base stores information; a canon establishes authority.
+- [You Do Not Automate Roles. You Transfer Mandates.](https://www.cmprssn.xyz/field-notes/you-do-not-automate-roles-you-transfer-mandates.html) — 2026-02-23. "Can AI replace this job?" is the wrong question. The useful unit is the mandate.
+- [Agent Memory Is Not One Thing. It's Five.](https://www.cmprssn.xyz/field-notes/agent-memory-is-not-one-thing.html) — 2026-02-09. "Agent memory" is shorthand for five structurally different systems.
+- [Your Company Has Four Different Things and Calls Them All "Goals"](https://www.cmprssn.xyz/field-notes/four-different-things-called-goals.html) — 2026-01-26. KPIs, Objectives, OKRs, Milestones — four structurally different commitments collapsed into one word.
+- [AI-Native People Aren't Power Users. They're Different Thinkers.](https://www.cmprssn.xyz/field-notes/ai-native-people.html) — 2026-01-12. AI-native people develop different instincts about what to externalize and what not to delegate.
+
+## Vocabulary
+
+Terms used precisely across the methodology and field notes:
+
+- **Coupling gap** — the distance between an organization's current operating shape and the shape required for agents to act inside it.
+- **Compression** — the process of removing that gap by redesigning workflows, roles, and data structures.
+- **Compression Scale** — the 12-stage / 6-vector instrument used to locate where a company sits and what its critical-path vector is.
+- **Compression Audit** — the two-week diagnostic engagement that produces that location.
+- **World Model** — Stage 6, the hinge of the scale: a machine-legible representation of what the organization is, knows, owns, permits, and intends.
+- **Legibility** — the property that lets agents (and people) act on the company without a human translator in the loop.
+- **Mandate** — a unit of accountability narrower than a role and broader than a task; the right primitive for transfer to agents.
+- **Mētis** — practical, situated know-how; the kind of knowing that documentation usually fails to capture.
+- **Canon** — an authoritative reference an agent can ground its outputs in (distinct from a knowledge base, which merely stores).
+- **MVO** — Minimum Viable Org; the smallest re-grouping of mandates and data sources that lets a workflow run agent-native.
+- **Frontier Team / Loop / Deposit / Codebook** — building blocks of the recompression playbook.
+
+## Contact
+
+- growth@cmprssn.xyz

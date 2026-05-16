@@ -1,0 +1,50 @@
+# CMPRSSN — robots.txt
+# Posture: allow all crawlers (search + LLM training + LLM grounding).
+# Goal is maximum citation reach across AI surfaces (Gemini, ChatGPT,
+# Perplexity, Claude). Reverse any of the explicit allows below if posture
+# changes.
+
+User-agent: *
+Allow: /
+
+# Gemini grounding / training (controls Google's AI features beyond core Search).
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI training crawler.
+User-agent: GPTBot
+Allow: /
+
+# OpenAI ChatGPT user-triggered fetch (live browsing inside ChatGPT).
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic training + Claude grounding.
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity (search + grounding).
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+
+# Common Crawl — feeds many open-source LLMs and Bing's grounding index.
+User-agent: CCBot
+Allow: /
+
+# Meta AI training crawler.
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# ByteDance / TikTok / Doubao.
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://www.cmprssn.xyz/sitemap.xml

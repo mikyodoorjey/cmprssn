@@ -254,7 +254,7 @@
           };
           requestAnimationFrame(tick);
         });
-      }, { threshold: 0.4 });
+      }, { threshold: 0, rootMargin: '0px 0px -30% 0px' });
       io.observe(el);
     });
   }
